@@ -1,2 +1,3 @@
 
-{:paths ["cli/"]}
+{:paths ["cli/"]
+ :deps {}}

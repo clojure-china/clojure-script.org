@@ -28,3 +28,6 @@ body * {
 ::-webkit-resizer{
   background-color:transparent;
 }
+
+
+.showcase .md-code-block {line-height: 1.5em;font-size:;}
