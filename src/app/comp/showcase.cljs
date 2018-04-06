@@ -12,7 +12,7 @@
             [app.util :refer [highlighter]]))
 
 (def showcases
-  {0 {:code "\n```clojure\n(defn describe-number [n]\n  (cond-> []\n    (odd? n) (conj \"odd\")\n    (even? n) (conj \"even\")\n    (zero? n) (conj \"zero\")\n    (pos? n) (conj \"positive\")))\n\n(describe-number 3) ;; => [\"odd\" \"positive\"]\n(describe-number 4) ;; => [\"even\" \"positive\"]\n```",
+  {0 {:code "\n```clojure\n(defn transform* [person]\n   (-> person\n      (assoc :hair-color :gray)\n      (update :age inc)))\n\n(defn calculate* []\n   (->> (range 10)\n        (filter odd? ,,,)\n        (map #(* % %) ,,,)\n        (reduce + ,,,)))\n\n(as-> [:foo :bar] v\n  (map name v)\n  (first v)\n  (.substring v 1))\n```",
       :text "Thread macros",
       :url "https://clojure.org/guides/threading_macros"},
    1 {:code "\n```clojure\n(let [[a b & the-rest] my-vector]\n  (println a b the-rest))\n;; => :a :b (:c :d)\n\n(let [{a :a d :d} my-hashmap]\n  (println a d))\n;; => A D\n\n(let [{:keys [a b], :as all} my-hashmap]\n  (println a b all))\n;; => A B {:a A :b B :c C :d D}\n```",
@@ -21,7 +21,7 @@
    2 {:code "\n```clojure\n(def m2 (js/Microsoft.Maps.Themes.BingTheme.))\n\n(def my-object (js-obj \"a\" 1 \"b\" true \"c\" nil))\n\n(def js-object #js {:a 1 :b 2})\n\n(def my-array (js->clj (.-globalArray js/window)))\n(def first-item (get my-array 0)) ;; 1\n\n(def my-obj (js->clj (.-globalObject js/window)))\n(def a (get my-obj \"a\")) ;; 1\n```",
       :text "InterOp",
       :url "http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/"},
-   3 {:code "\n```clojure\n(def xform\n  (comp\n    (map #(+ 2 %))\n    (filter odd?)))\n(transduce xform + (range 0 10))\n```",
+   3 {:code "\n```clojure\n(def xform\n  (comp\n    (map #(+ 2 %))\n    (filter odd?)))\n\n(transduce xform + (range 0 10))\n```",
       :text "Transducers",
       :url "https://stackoverflow.com/a/26322910/883571"},
    4 {:code "\n```clojure\n(ns example\n  (:require [reagent.core :as r]))\n(defn simple-component []\n  [:div\n   [:p \"I am a component!\"]\n   [:p.someclass\n    \"I have \" [:strong \"bold\"]\n    [:span {:style {:color \"red\"}} \" and red \"]\n    \"text.\"]])\n\n(defn render-simple []\n  (r/render [simple-component]\n    (.-body js/document)))\n\n```",
@@ -38,14 +38,17 @@
       :url "https://stackoverflow.com/a/38754874/883571"},
    8 {:code "\n```clojure\n(def car\n  (atom {:make \"Audi\"\n         :model \"Q3\"}))\n\n; @car\n;; {:make \"Audi\", :model \"Q3\"}\n\n(swap!\n car\n assoc :model \"Q5\")\n;; {:make \"Audi\", :model \"Q5\"}\n\n(reset! car {:make \"\" :model \"\"})\n;; {:make \"\", :model \"\"}\n```",
       :text "Atom",
-      :url "https://clojuredocs.org/clojure.core/atom"}})
+      :url "https://clojuredocs.org/clojure.core/atom"},
+   9 {:code "\n```clojure\n; Lists are sequences of values\n(:bun :beef-patty 9 \"yum!\")\n\n; Vectors allow random access\n[:gelato 1 2 -2]\n\n; Maps are associative data structures that\n; associate the key with its value\n{:eggs        2\n :lemon-juice 3.5\n :butter      1}\n```",
+      :text "EDN",
+      :url "https://learnxinyminutes.com/docs/edn/"}})
 
 (defcomp
  comp-showcase
  (case-idx)
  (let [showcase (get showcases case-idx)]
    (div
-    {:class-name "showcase", :style (merge ui/row-center {:padding "16px", :height 320})}
+    {:class-name "showcase", :style (merge ui/row-center {:padding "16px", :height 360})}
     (comp-md-block
      (:code showcase)
      {:style {:background-color :transparent,

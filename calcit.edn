@@ -718,7 +718,7 @@
                         :type :expr, :by "root", :at 1522986501469, :id "r1aZAwVjz"
                         :data {
                          "T" {:type :leaf, :by "root", :at 1522986505757, :text "rand-int", :id "S1GsZ0vNif"}
-                         "j" {:type :leaf, :by "root", :at 1522989672523, :text "9", :id "S1fMz0wVjG"}
+                         "j" {:type :leaf, :by "root", :at 1522991167921, :text "10", :id "S1fMz0wVjG"}
                         }
                        }
                       }
@@ -923,11 +923,18 @@
           :type :expr, :by "root", :at 1522929026704, :id "BJloKaFXoM"
           :data {
            "T" {:type :leaf, :by "root", :at 1522929029255, :text "comp-md-block", :id "BJloKaFXoMleaf"}
-           "j" {:type :leaf, :by "root", :at 1522929169250, :text "\"\n### ClojureScript and Clojure\n\nClojureScript has almost the same syntax, same jar files for release libraries.\n\n### ClojureScript and npm\n\nYou can import code from npm modules. You can do js interop to call JavaScript code.\n\n### Learn ClojureScript\n\nLet me gather some links.\n", :id "Sk0FTtmof"}
+           "j" {:type :leaf, :by "root", :at 1522991963652, :text "\"\n### ClojureScript and Clojure\n\nClojureScript and Clojure share the same syntax but distinguish by `.cljs` extension name. The most different part is the difference in host platforms, like JavaScript is known as single-threaded and restricted by browser APIs.\n\nLibraries of both sides release code on [Clojars](https://clojars.org/) in jar files.\n\n### ClojureScript and npm\n\nWith JavaScript InterOp, you may call some JavaScript code from in Clojure syntax. ClojureScript is designed to use features from host platform. You are free to import npm modules in ClojureScript, most of them will work correctly, especially in shadow-cljs and Lumo.\n\n### Communities\n\nJoin us on:\n\n* http://clojureverse.org/\n* http://clojurians.slack.com/\n* https://www.reddit.com/r/Clojure/\n* https://discord.gg/X6yrEjc\n\nAlso cool if you use [Twitter](http://twitter.com/scriptclojure).\n", :id "Sk0FTtmof"}
            "r" {
             :type :expr, :by "root", :at 1522929031007, :id "rJyqaKXiM"
             :data {
              "T" {:type :leaf, :by "root", :at 1522929031337, :text "{}", :id "HybRF6FQoG"}
+             "j" {
+              :type :expr, :by "root", :at 1522990546889, :id "HJZjC6u4of"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1522990549911, :text ":class-name", :id "H1xsRaO4jz"}
+               "j" {:type :leaf, :by "root", :at 1522990553018, :text "\"content", :id "BkQARadNoG"}
+              }
+             }
             }
            }
           }
@@ -1065,6 +1072,61 @@
                   :data {
                    "T" {:type :leaf, :by "root", :at 1522949327411, :text ":target", :id "H1gICnCQifleaf"}
                    "j" {:type :leaf, :by "root", :at 1522949333673, :text "\"_blank", :id "B1K0hAQif"}
+                  }
+                 }
+                 "v" {
+                  :type :expr, :by "root", :at 1522991373773, :id "Hyx8fbKVsz"
+                  :data {
+                   "T" {:type :leaf, :by "root", :at 1522991375336, :text ":style", :id "Hyx8fbKVszleaf"}
+                   "j" {
+                    :type :expr, :by "root", :at 1522991376499, :id "S1ufWtNoM"
+                    :data {
+                     "T" {:type :leaf, :by "root", :at 1522991376846, :text "{}", :id "BkUDM-KEiM"}
+                     "j" {
+                      :type :expr, :by "root", :at 1522991377068, :id "HyGFzZKNjM"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1522991381138, :text ":text-decoration", :id "HJ-YMWt4oM"}
+                       "j" {:type :leaf, :by "root", :at 1522991381991, :text ":none", :id "By7TGZKNjz"}
+                      }
+                     }
+                     "r" {
+                      :type :expr, :by "root", :at 1522991382517, :id "r1E0GZtNif"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1522991387840, :text ":font-size", :id "r1E0GZtNifleaf"}
+                       "j" {:type :leaf, :by "root", :at 1522991388377, :text "16", :id "ByG4QWtViG"}
+                      }
+                     }
+                     "v" {
+                      :type :expr, :by "root", :at 1522991388970, :id "ryxSQbt4sM"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1522991390459, :text ":color", :id "ryxSQbt4sMleaf"}
+                       "j" {
+                        :type :expr, :by "root", :at 1522991390718, :id "H1lPQbKEif"
+                        :data {
+                         "T" {:type :leaf, :by "root", :at 1522991391790, :text "hsl", :id "HJP7-F4jM"}
+                         "j" {:type :leaf, :by "root", :at 1522991392932, :text "240", :id "BkxOQZKEsf"}
+                         "r" {:type :leaf, :by "root", :at 1522991397119, :text "90", :id "SyxYXWYNiG"}
+                         "v" {:type :leaf, :by "root", :at 1522991433077, :text "70", :id "S17tQZFNsz"}
+                        }
+                       }
+                      }
+                     }
+                     "x" {
+                      :type :expr, :by "root", :at 1522991406888, :id "ByxDEZtVsG"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1522991410203, :text ":line-height", :id "ByxDEZtVsGleaf"}
+                       "j" {:type :leaf, :by "root", :at 1522991421061, :text "\"1.4em", :id "r1rqE-KNiG"}
+                      }
+                     }
+                     "y" {
+                      :type :expr, :by "root", :at 1522991437988, :id "Hye8LZYNsG"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1522991444159, :text ":font-family", :id "Hye8LZYNsGleaf"}
+                       "j" {:type :leaf, :by "root", :at 1522991447236, :text "ui/font-fancy", :id "H1b2IZFNoM"}
+                      }
+                     }
+                    }
+                   }
                   }
                  }
                 }
@@ -1258,11 +1320,18 @@
           :type :expr, :by "root", :at 1522928949667, :id "rJR4Ttmiz"
           :data {
            "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
-           "j" {:type :leaf, :by "root", :at 1522928995118, :text "\"There are tools for compiling ClojureScript, which is unlike Webpack..", :id "HJxBSpK7jz"}
+           "j" {:type :leaf, :by "root", :at 1522991516158, :text "\"ClojureScript is a compiler for Clojure that targets JavaScript. It emits JavaScript code which is compatible with the advanced compilation mode of the Google Closure optimizing compiler.\n\n### Learning\n\nClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:", :id "HJxBSpK7jz"}
            "r" {
             :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
             :data {
              "T" {:type :leaf, :by "root", :at 1522929001979, :text "{}", :id "SygbuatQsz"}
+             "j" {
+              :type :expr, :by "root", :at 1522990526339, :id "Hy-L6p_Eiz"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1522990528100, :text ":class-name", :id "r1eUppO4iG"}
+               "j" {:type :leaf, :by "root", :at 1522990532235, :text "\"content", :id "ByVO66O4oz"}
+              }
+             }
             }
            }
           }
@@ -1456,6 +1525,46 @@
                 :data {
                  "T" {:type :leaf, :by "root", :at 1522949434092, :text ":description", :id "rJgJraRQjMleaf"}
                  "j" {:type :leaf, :by "root", :at 1522988078128, :text "\"clj --main cljs.main --compile hello-world.core --repl", :id "HyEGBaAXsf"}
+                }
+               }
+              }
+             }
+            }
+           }
+           "y9" {
+            :type :expr, :by "root", :at 1522948836212, :id "rkeEXauViG"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1522948817070, :text "comp-tool-card", :id "Skpac0QjMleaf"}
+             "r" {
+              :type :expr, :by "root", :at 1522948837857, :id "ByeC1jAQsM"
+              :data {
+               "D" {:type :leaf, :by "root", :at 1522948839276, :text "{}", :id "rk-AJo0mjz"}
+               "L" {
+                :type :expr, :by "root", :at 1522948843069, :id "r1xXeoR7sM"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1522948844657, :text ":name", :id "r1xXeoR7sMleaf"}
+                 "j" {:type :leaf, :by "root", :at 1522990392252, :text "\"planck", :id "H1-SxoAmoM"}
+                }
+               }
+               "T" {
+                :type :expr, :by "root", :at 1522948840174, :id "BkWexiRXiG"
+                :data {
+                 "D" {:type :leaf, :by "root", :at 1522948842201, :text ":logo", :id "rJWeoCmiG"}
+                 "b" {:type :leaf, :by "root", :at 1522948908245, :text "nil", :id "Bk-XEi0XiG"}
+                }
+               }
+               "j" {
+                :type :expr, :by "root", :at 1522948848853, :id "HkeKloRQiG"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1522948852157, :text ":url", :id "HkeKloRQiGleaf"}
+                 "j" {:type :leaf, :by "root", :at 1522990388997, :text "\"http://planck-repl.org/", :id "HyaliCmsM"}
+                }
+               }
+               "r" {
+                :type :expr, :by "root", :at 1522949431060, :id "rJgJraRQjM"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1522949434092, :text ":description", :id "rJgJraRQjMleaf"}
+                 "j" {:type :leaf, :by "root", :at 1522990400787, :text "\"Planck is a stand-alone ClojureScript REPL for macOS and Linux.", :id "HyEGBaAXsf"}
                 }
                }
               }
@@ -1686,7 +1795,7 @@
                     :type :expr, :by "root", :at 1522987174677, :id "Sk13euVjM"
                     :data {
                      "T" {:type :leaf, :by "root", :at 1522987178060, :text ":height", :id "Sk13euVjMleaf"}
-                     "j" {:type :leaf, :by "root", :at 1522987185048, :text "320", :id "HJX2g_Eif"}
+                     "j" {:type :leaf, :by "root", :at 1522991294453, :text "360", :id "HJX2g_Eif"}
                     }
                    }
                   }
@@ -1940,7 +2049,7 @@
               :type :expr, :by "root", :at 1522986296662, :id "SkbB6P4jM"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986299242, :text ":code", :id "B1zSaDNoz"}
-               "T" {:type :leaf, :by "root", :at 1522986722812, :text "\"\n```clojure\n(defn describe-number [n]\n  (cond-> []\n    (odd? n) (conj \"odd\")\n    (even? n) (conj \"even\")\n    (zero? n) (conj \"zero\")\n    (pos? n) (conj \"positive\")))\n\n(describe-number 3) ;; => [\"odd\" \"positive\"]\n(describe-number 4) ;; => [\"even\" \"positive\"]\n```", :id "SkPM6vNiM"}
+               "T" {:type :leaf, :by "root", :at 1522991244858, :text "\"\n```clojure\n(defn transform* [person]\n   (-> person\n      (assoc :hair-color :gray)\n      (update :age inc)))\n\n(defn calculate* []\n   (->> (range 10)\n        (filter odd? ,,,)\n        (map #(* % %) ,,,)\n        (reduce + ,,,)))\n\n(as-> [:foo :bar] v\n  (map name v)\n  (first v)\n  (.substring v 1))\n```", :id "SkPM6vNiM"}
               }
              }
              "j" {
@@ -2039,7 +2148,7 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522987144342, :text "\"\n```clojure\n(def xform\n  (comp\n    (map #(+ 2 %))\n    (filter odd?)))\n(transduce xform + (range 0 10))\n```", :id "SkPM6vNiM"}
+               "T" {:type :leaf, :by "root", :at 1522990975277, :text "\"\n```clojure\n(def xform\n  (comp\n    (map #(+ 2 %))\n    (filter odd?)))\n\n(transduce xform + (range 0 10))\n```", :id "SkPM6vNiM"}
               }
              }
              "j" {
@@ -2219,6 +2328,39 @@
               :data {
                "T" {:type :leaf, :by "root", :at 1522987120168, :text ":url", :id "SyUuguEsMleaf"}
                "j" {:type :leaf, :by "root", :at 1522989668884, :text "\"https://clojuredocs.org/clojure.core/atom", :id "H1MO_ldEsM"}
+              }
+             }
+            }
+           }
+          }
+         }
+         "yx" {
+          :type :expr, :by "root", :at 1522986253642, :id "r1JWlKEoM"
+          :data {
+           "T" {:type :leaf, :by "root", :at 1522991097175, :text "9", :id "BybVzpDVof"}
+           "j" {
+            :type :expr, :by "root", :at 1522986667241, :id "SJWX20P4oM"
+            :data {
+             "D" {:type :leaf, :by "root", :at 1522986668411, :text "{}", :id "B1Vh0wVjM"}
+             "T" {
+              :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
+              :data {
+               "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
+               "T" {:type :leaf, :by "root", :at 1522991114123, :text "\"\n```clojure\n; Lists are sequences of values\n(:bun :beef-patty 9 \"yum!\")\n\n; Vectors allow random access\n[:gelato 1 2 -2]\n\n; Maps are associative data structures that\n; associate the key with its value\n{:eggs        2\n :lemon-juice 3.5\n :butter      1}\n```", :id "SkPM6vNiM"}
+              }
+             }
+             "j" {
+              :type :expr, :by "root", :at 1522986671606, :id "SkOnAvVoG"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1522986672660, :text ":text", :id "BylwnAvEof"}
+               "j" {:type :leaf, :by "root", :at 1522991117952, :text "|EDN", :id "HJgFnRvEjM"}
+              }
+             }
+             "r" {
+              :type :expr, :by "root", :at 1522987117748, :id "SyUuguEsM"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1522987120168, :text ":url", :id "SyUuguEsMleaf"}
+               "j" {:type :leaf, :by "root", :at 1522991132092, :text "\"https://learnxinyminutes.com/docs/edn/", :id "H1MO_ldEsM"}
               }
              }
             }
@@ -2645,7 +2787,7 @@
           :type :expr, :by "root", :at 1522986169294, :id "ryzW63vEiz"
           :data {
            "T" {:type :leaf, :by "root", :at 1522986171268, :text "rand-int", :id "HyZ-T2DEof"}
-           "j" {:type :leaf, :by "root", :at 1522989676021, :text "9", :id "rJm1G_NiM"}
+           "j" {:type :leaf, :by "root", :at 1522991137057, :text "10", :id "rJm1G_NiM"}
           }
          }
         }

@@ -41,3 +41,20 @@ body * {
   font-weight:300;
 }
 
+.md-block.content .md-p {
+  line-height:1.6em;
+  margin: 16px 0;
+}
+
+.md-block.content li {
+  list-style: none;
+  margin-left: 16px;
+  line-height: 2em;
+}
+
+.md-block.content a {
+  text-decoration: none;
+  color: hsl(240,90%,70%);
+  font-family: Josefin sans, Helvetica Neue, Arial, sans-serif;
+  font-size: 16px;
+}

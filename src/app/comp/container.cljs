@@ -42,7 +42,7 @@
               :background-position "center center",
               :background-size :cover,
               :cursor :pointer},
-      :on-click (fn [e d! m!] (d! :pick-case (rand-int 9)))})
+      :on-click (fn [e d! m!] (d! :pick-case (rand-int 10)))})
     (=< 8 nil)
     (<>
      "ClojureScript"
@@ -61,8 +61,8 @@
  (div
   {:style {:width 800, :margin :auto}}
   (comp-md-block
-   "\n### ClojureScript and Clojure\n\nClojureScript has almost the same syntax, same jar files for release libraries.\n\n### ClojureScript and npm\n\nYou can import code from npm modules. You can do js interop to call JavaScript code.\n\n### Learn ClojureScript\n\nLet me gather some links.\n"
-   {})))
+   "\n### ClojureScript and Clojure\n\nClojureScript and Clojure share the same syntax but distinguish by `.cljs` extension name. The most different part is the difference in host platforms, like JavaScript is known as single-threaded and restricted by browser APIs.\n\nLibraries of both sides release code on [Clojars](https://clojars.org/) in jar files.\n\n### ClojureScript and npm\n\nWith JavaScript InterOp, you may call some JavaScript code from in Clojure syntax. ClojureScript is designed to use features from host platform. You are free to import npm modules in ClojureScript, most of them will work correctly, especially in shadow-cljs and Lumo.\n\n### Communities\n\nJoin us on:\n\n* http://clojureverse.org/\n* http://clojurians.slack.com/\n* https://www.reddit.com/r/Clojure/\n* https://discord.gg/X6yrEjc\n\nAlso cool if you use [Twitter](http://twitter.com/scriptclojure).\n"
+   {:class-name "content"})))
 
 (defcomp
  comp-tool-card
@@ -76,7 +76,17 @@
             :margin-top 16})}
   (div
    {}
-   (div {} (a {:href (:url info), :target "_blank"} (<> (:name info))))
+   (div
+    {}
+    (a
+     {:href (:url info),
+      :target "_blank",
+      :style {:text-decoration :none,
+              :font-size 16,
+              :color (hsl 240 90 70),
+              :line-height "1.4em",
+              :font-family ui/font-fancy}}
+     (<> (:name info))))
    (div {} (<> (:description info))))
   (if (some? (:logo info))
     (div
@@ -92,8 +102,8 @@
  (div
   {:style {:width 800, :margin :auto}}
   (comp-md-block
-   "There are tools for compiling ClojureScript, which is unlike Webpack.."
-   {})
+   "ClojureScript is a compiler for Clojure that targets JavaScript. It emits JavaScript code which is compatible with the advanced compilation mode of the Google Closure optimizing compiler.\n\n### Learning\n\nClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:"
+   {:class-name "content"})
   (div
    {:style (merge {:width :auto})}
    (comp-tool-card
@@ -115,7 +125,12 @@
     {:name "cljs.main",
      :logo nil,
      :url "https://clojurescript.org/guides/quick-start",
-     :description "clj --main cljs.main --compile hello-world.core --repl"}))))
+     :description "clj --main cljs.main --compile hello-world.core --repl"})
+   (comp-tool-card
+    {:name "planck",
+     :logo nil,
+     :url "http://planck-repl.org/",
+     :description "Planck is a stand-alone ClojureScript REPL for macOS and Linux."}))))
 
 (defcomp
  comp-container
