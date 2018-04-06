@@ -9,7 +9,9 @@
             [respo.comp.space :refer [=<]]
             [reel.comp.reel :refer [comp-reel]]
             [respo-md.comp.md :refer [comp-md comp-md-block]]
-            [app.schema :refer [dev?]]))
+            [app.schema :refer [dev?]]
+            [app.util :refer [highlighter]]
+            [app.comp.showcase :refer [comp-showcase]]))
 
 (defcomp
  comp-footer
@@ -28,22 +30,30 @@
  comp-header
  ()
  (div
-  {:style {:padding 8}}
+  {:style {:padding 16}}
   (div
    {:style (merge ui/row-parted {:width 800, :margin :auto})}
    (div
-    {:style {:background-image (str "url(http://cdn.tiye.me/logo/cljs.png)"),
-             :width 40,
-             :height 40,
-             :background-position "center center",
-             :background-size :cover}})
+    {:style ui/row-center}
+    (div
+     {:style {:background-image (str "url(http://cdn.tiye.me/logo/cljs.png)"),
+              :width 40,
+              :height 40,
+              :background-position "center center",
+              :background-size :cover,
+              :cursor :pointer},
+      :on-click (fn [e d! m!] (d! :pick-case (rand-int 9)))})
+    (=< 8 nil)
+    (<>
+     "ClojureScript"
+     {:font-family ui/font-fancy, :color :white, :font-weight 100, :font-size 24}))
    (div
     {}
     (a
-     {:href "https://clojurescript.org/guides/quick-start",
+     {:href "https://clojurescript.org/",
       :inner-text "Official site",
       :target "_blank",
-      :style {:color (hsl 240 80 80)}})))))
+      :style {:color (hsl 240 80 80), :font-family ui/font-fancy, :text-decoration :none}})))))
 
 (defcomp
  comp-resources
@@ -53,22 +63,6 @@
   (comp-md-block
    "\n### ClojureScript and Clojure\n\nClojureScript has almost the same syntax, same jar files for release libraries.\n\n### ClojureScript and npm\n\nYou can import code from npm modules. You can do js interop to call JavaScript code.\n\n### Learn ClojureScript\n\nLet me gather some links.\n"
    {})))
-
-(defcomp
- comp-showcase
- ()
- (div
-  {:class-name "showcase", :style (merge ui/row-center {:padding "16px"})}
-  (comp-md-block
-   "\n```clojure\n(ns app.main (:require [\"http\" :as http]))\n\n(defonce *visits (atom {}))\n\n(defn handler [req res]\n  (swap! *visits update (.-url req) inc)\n  (.writeHead res 200 #js {\"Content-Type\" \"text/html\"})\n  (.end res\n    (str \"<pre>Visits \" (pr-str @*visits) \"</pre>\")))\n\n(defn main! []\n  (let [server (http/createServer handler)]\n    (.listen server 3000)\n    (println \"server listening on 3000\")))\n\n(main!)\n```"
-   {:style {:background-color :transparent,
-            :font-family ui/font-code,
-            :color :white,
-            :padding 8}})
-  (=< 16 nil)
-  (comp-md-block
-   "ClojureScript is cool.\n\n* Feature A\n* Feature B\n* Feature C, just like that\n\ncomes with more..."
-   {:style {:color :white}})))
 
 (defcomp
  comp-tool-card
@@ -116,7 +110,12 @@
     {:name "Figwheel",
      :logo nil,
      :url "https://github.com/bhauman/lein-figwheel",
-     :description "Figwheel builds your ClojureScript code and hot loads it into the browser as you are coding!"}))))
+     :description "Figwheel builds your ClojureScript code and hot loads it into the browser as you are coding!"})
+   (comp-tool-card
+    {:name "cljs.main",
+     :logo nil,
+     :url "https://clojurescript.org/guides/quick-start",
+     :description "clj --main cljs.main --compile hello-world.core --repl"}))))
 
 (defcomp
  comp-container
@@ -127,7 +126,7 @@
     (div
      {:style {:background-image "linear-gradient(to right, #0f2242, #2452a1)"}}
      (comp-header)
-     (comp-showcase))
+     (comp-showcase (:case-idx store)))
     (=< nil 32)
     (comp-tools)
     (comp-resources)

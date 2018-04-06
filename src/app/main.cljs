@@ -7,7 +7,9 @@
             [reel.util :refer [listen-devtools!]]
             [reel.core :refer [reel-updater refresh-reel]]
             [reel.schema :as reel-schema]
-            [cljs.reader :refer [read-string]]))
+            [cljs.reader :refer [read-string]]
+            ["highlight.js" :as hljs]
+            ["highlight.js/lib/languages/clojure" :as clojure-lang]))
 
 (defonce *reel
   (atom (-> reel-schema/reel (assoc :base schema/store) (assoc :store schema/store))))
@@ -24,6 +26,7 @@
 (def ssr? (some? (js/document.querySelector "meta.respo-ssr")))
 
 (defn main! []
+  (.registerLanguage hljs "clojure" clojure-lang)
   (if ssr? (render-app! realize-ssr!))
   (render-app! render!)
   (add-watch *reel :changes (fn [] (render-app! render!)))
@@ -34,6 +37,7 @@
    (fn [] (.setItem js/localStorage (:storage schema/config) (pr-str (:store @*reel)))))
   (let [raw (.getItem js/localStorage (:storage schema/config))]
     (if (some? raw) (do (dispatch! :hydrate-storage (read-string raw)))))
+  (dispatch! :pick-case (rand-int 9))
   (println "App started."))
 
 (defn reload! []

@@ -5,4 +5,4 @@
 
 (def dev? (do ^boolean js/goog.DEBUG))
 
-(def store {:states {}, :content ""})
+(def store {:states {}, :content "", :case-idx 0})

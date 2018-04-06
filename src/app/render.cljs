@@ -20,7 +20,7 @@
     base-info
     {:styles ["/entry/main.css" "http://localhost:8100/main.css"],
      :scripts ["/main.js"],
-     :inline-styles []})))
+     :inline-styles [(slurp "node_modules/highlight.js/styles/monokai-sublime.css")]})))
 
 (def preview? (= "preview" js/process.env.prod))
 
@@ -37,7 +37,8 @@
       {:styles ["http://cdn.tiye.me/favored-fonts/main.css"],
        :scripts (map #(-> % :output-name prefix-cdn) assets),
        :ssr "respo-ssr",
-       :inline-styles [(slurp "./entry/main.css")]}))))
+       :inline-styles [(slurp "node_modules/highlight.js/styles/monokai-sublime.css")
+                       (slurp "./entry/main.css")]}))))
 
 (defn main! []
   (if (= js/process.env.env "dev")
