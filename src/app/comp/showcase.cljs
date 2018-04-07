@@ -48,22 +48,21 @@
  (case-idx)
  (let [showcase (get showcases case-idx)]
    (div
-    {:class-name "showcase", :style (merge ui/row-center {:padding "16px", :height 360})}
+    {:class-name "showcase",
+     :style (merge ui/center {:padding 16, :min-height 360, :overflow :auto})}
+    (div
+     {}
+     (<> (:text showcase) {:color :white, :font-size 16})
+     (=< 16 nil)
+     (a
+      {:href (:url showcase),
+       :target "_blank",
+       :style {:color (hsl 240 80 80), :text-decoration :none, :font-family ui/font-fancy},
+       :inner-text "Link"}))
     (comp-md-block
      (:code showcase)
      {:style {:background-color :transparent,
               :font-family ui/font-code,
               :color :white,
               :padding 8},
-      :highlight highlighter})
-    (=< 32 nil)
-    (div
-     {}
-     (comp-md-block (:text showcase) {:style {:color :white}})
-     (div
-      {}
-      (a
-       {:href (:url showcase),
-        :target "_blank",
-        :style {:color (hsl 240 80 80), :text-decoration :none, :font-family ui/font-fancy},
-        :inner-text "Link"}))))))
+      :highlight highlighter}))))

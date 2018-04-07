@@ -17,9 +17,9 @@
  comp-footer
  ()
  (div
-  {:style {:background-color "#292d2e", :height 200}}
+  {:style {:background-color "#292d2e", :height 200, :padding 16}}
   (div
-   {:style {:width 800, :margin :auto, :padding "16px 0"}}
+   {:style {:max-width 800, :margin :auto}}
    (a
     {:style {:color (hsl 240 80 80), :text-decoration :none},
      :href "https://github.com/clojure-china/clojure-script.org",
@@ -32,7 +32,7 @@
  (div
   {:style {:padding 16}}
   (div
-   {:style (merge ui/row-parted {:width 800, :margin :auto})}
+   {:style (merge ui/row-parted {:max-width 800, :margin :auto})}
    (div
     {:style ui/row-center}
     (div
@@ -59,7 +59,7 @@
  comp-resources
  ()
  (div
-  {:style {:width 800, :margin :auto}}
+  {:style {:max-width 800, :margin :auto, :padding 16}}
   (comp-md-block
    "\n### ClojureScript and Clojure\n\nClojureScript and Clojure share the same syntax but distinguish by `.cljs` extension name. The most different part is the difference in host platforms, like JavaScript is known as single-threaded and restricted by browser APIs.\n\nLibraries of both sides release code on [Clojars](https://clojars.org/) in jar files.\n\n### ClojureScript and npm\n\nWith JavaScript InterOp, you may call some JavaScript code from in Clojure syntax. ClojureScript is designed to use features from host platform. You are free to import npm modules in ClojureScript, most of them will work correctly, especially in shadow-cljs and Lumo.\n\n### Immutable Data Structure\n\nClojure is a functional programming language. It provides the tools to avoid mutable state, provides functions as first-class objects, and emphasizes recursive iteration instead of side-effect based looping. Meanwhile immutable data structure happens to be a great tool React needs in reducing redundant virtual DOM renderings.\n\n### Communities\n\nJoin us on:\n\n* http://clojureverse.org/\n* http://clojurians.slack.com/\n* https://www.reddit.com/r/Clojure/\n* https://discord.gg/X6yrEjc\n\nAlso cool if you use [Twitter](http://twitter.com/scriptclojure).\n"
    {:class-name "content"})))
@@ -100,7 +100,7 @@
  comp-tools
  ()
  (div
-  {:style {:width 800, :margin :auto}}
+  {:style {:max-width 800, :margin :auto, :padding 16}}
   (comp-md-block
    "Clojure is a dialect of the Lisp programming language. Clojure is a general-purpose programming language with an emphasis on functional programming. ClojureScript is a compiler for Clojure that targets JavaScript.\n### Learning\n\nClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/), [Video](https://lambdaisland.com/episodes/clojurescript-interop)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:"
    {:class-name "content"})
@@ -137,7 +137,7 @@
  (reel)
  (let [store (:store reel), states (:states store)]
    (div
-    {:style (merge ui/global {:background-color :white})}
+    {:style (merge ui/global {:background-color :white, :font-size 16})}
     (div
      {:style {:background-image "linear-gradient(to right, #0f2242, #2452a1)"}}
      (comp-header)
