@@ -60,7 +60,7 @@
  (div
   {:style {:max-width 800, :margin :auto, :padding 16}}
   (comp-md-block
-   "\n### ClojureScript and Clojure\n\nClojureScript and Clojure share the same syntax but distinguish by `.cljs` extension name. The most different part is the difference in host platforms, like JavaScript is known as single-threaded and restricted by browser APIs.\n\nLibraries of both sides release code on [Clojars](https://clojars.org/) in jar files.\n\n### ClojureScript and npm\n\nWith JavaScript InterOp, you may call some JavaScript code from in Clojure syntax. ClojureScript is designed to use features from host platform. You are free to import npm modules in ClojureScript, most of them will work correctly, especially in shadow-cljs and Lumo.\n\n### Immutable Data Structure\n\nClojure is a functional programming language. It provides the tools to avoid mutable state, provides functions as first-class objects, and emphasizes recursive iteration instead of side-effect based looping. Meanwhile immutable data structure happens to be a great tool React needs in reducing redundant virtual DOM renderings.\n\n### Communities\n\nJoin us on:\n\n* http://clojureverse.org/\n* http://clojurians.slack.com/\n* https://www.reddit.com/r/Clojure/\n* https://discord.gg/X6yrEjc\n\nAlso cool if you use [Twitter](http://twitter.com/scriptclojure).\n"
+   "You may also try [Planck](http://planck-repl.org/), [boot-cljs](https://github.com/boot-clj/boot-cljs) or [lein-cljsbuild](https://github.com/emezeske/lein-cljsbuild/) based on your needs.\n\n### ClojureScript and Clojure\n\nClojureScript and Clojure share the same syntax but distinguish by `.cljs` extension name. The most different part is the difference in host platforms, like JavaScript is known as single-threaded and restricted by browser APIs.\n\nLibraries of both sides release code on [Clojars](https://clojars.org/) in jar files.\n\n### ClojureScript and npm\n\nWith JavaScript InterOp, you may call some JavaScript code from in Clojure syntax. ClojureScript is designed to use features from host platform. You are free to import npm modules in ClojureScript, most of them will work correctly, especially in shadow-cljs and Lumo.\n\n### Immutable Data Structure\n\nClojure is a functional programming language. It provides the tools to avoid mutable state, provides functions as first-class objects, and emphasizes recursive iteration instead of side-effect based looping. Meanwhile immutable data structure happens to be a great tool React needs in reducing redundant virtual DOM renderings.\n\n### Communities\n\nJoin us on:\n\n* http://clojureverse.org/\n* http://clojurians.slack.com/\n* https://www.reddit.com/r/Clojure/\n* https://discord.gg/X6yrEjc\n\nAlso cool if you use [Twitter](http://twitter.com/scriptclojure).\n"
    {:class-name "content"})))
 
 (defcomp
@@ -124,12 +124,7 @@
     {:name "cljs.main",
      :logo nil,
      :url "https://clojurescript.org/guides/quick-start",
-     :description "clj --main cljs.main --compile hello-world.core --repl"})
-   (comp-tool-card
-    {:name "planck",
-     :logo nil,
-     :url "http://planck-repl.org/",
-     :description "Planck is a stand-alone ClojureScript REPL for macOS and Linux."}))))
+     :description "clj --main cljs.main --compile hello-world.core --repl"}))))
 
 (defcomp
  comp-container
