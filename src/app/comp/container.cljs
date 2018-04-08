@@ -34,15 +34,14 @@
   (div
    {:style (merge ui/row-parted {:max-width 800, :margin :auto})}
    (div
-    {:style ui/row-center}
+    {:style (merge ui/row-center {:cursor :pointer}),
+     :on-click (fn [e d! m!] (d! :pick-case (rand-int 10)))}
     (div
      {:style {:background-image (str "url(http://cdn.tiye.me/logo/cljs.png)"),
               :width 40,
               :height 40,
               :background-position "center center",
-              :background-size :cover,
-              :cursor :pointer},
-      :on-click (fn [e d! m!] (d! :pick-case (rand-int 10)))})
+              :background-size :cover}})
     (=< 8 nil)
     (<>
      "ClojureScript"
@@ -51,7 +50,7 @@
     {}
     (a
      {:href "https://clojurescript.org/",
-      :inner-text "Official site",
+      :inner-text "Back to the official one...",
       :target "_blank",
       :style {:color (hsl 240 80 80), :font-family ui/font-fancy, :text-decoration :none}})))))
 

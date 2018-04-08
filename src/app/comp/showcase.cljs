@@ -15,7 +15,7 @@
   {0 {:code "\n```clojure\n(defn transform* [person]\n   (-> person\n      (assoc :hair-color :gray)\n      (update :age inc)))\n\n(defn calculate* []\n   (->> (range 10)\n        (filter odd? ,,,)\n        (map #(* % %) ,,,)\n        (reduce + ,,,)))\n\n(as-> [:foo :bar] v\n  (map name v)\n  (first v)\n  (.substring v 1))\n```",
       :text "Thread macros",
       :url "https://clojure.org/guides/threading_macros"},
-   1 {:code "\n```clojure\n(let [[a b & the-rest] my-vector]\n  (println a b the-rest))\n;; => :a :b (:c :d)\n\n(let [{a :a d :d} my-hashmap]\n  (println a d))\n;; => A D\n\n(let [{:keys [a b], :as all} my-hashmap]\n  (println a b all))\n;; => A B {:a A :b B :c C :d D}\n```",
+   1 {:code "\n```clojure\n(let [[a b & the-rest] [:a :b :c :d]]\n  (println a b the-rest))\n;; => :a :b (:c :d)\n\n(let [{a :a d :d} {:a \"A\" :b \"B\" :c \"C\" :d \"D\"}]\n  (println a d))\n;; => A D\n\n(let [{:keys [a b], :as all} {:a \"A\" :b \"B\" :c \"C\" :d \"D\"}]\n  (println a b all))\n;; => A B {:a A :b B :c C :d D}\n```",
       :text "Destructuring",
       :url "https://gist.github.com/john2x/e1dca953548bfdfb9844"},
    2 {:code "\n```clojure\n(def m2 (js/Microsoft.Maps.Themes.BingTheme.))\n\n(def my-object (js-obj \"a\" 1 \"b\" true \"c\" nil))\n\n(def js-object #js {:a 1 :b 2})\n\n(def my-array (js->clj (.-globalArray js/window)))\n(def first-item (get my-array 0)) ;; 1\n\n(def my-obj (js->clj (.-globalObject js/window)))\n(def a (get my-obj \"a\")) ;; 1\n```",
