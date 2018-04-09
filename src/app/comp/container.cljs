@@ -24,7 +24,7 @@
     {:style {:color (hsl 240 80 80), :text-decoration :none},
      :href "https://github.com/clojure-china/clojure-script.org",
      :target "_blank"}
-    (<> "Site built with ClojureScript & Respo.")))))
+    (<> "Site built with shadow-cljs & Respo.")))))
 
 (defcomp
  comp-header
@@ -50,8 +50,7 @@
     {}
     (a
      {:href "https://clojurescript.org/",
-      :inner-text "Back to the official one...",
-      :target "_blank",
+      :inner-text "Back to official",
       :style {:color (hsl 240 80 80), :font-family ui/font-fancy, :text-decoration :none}})))))
 
 (defcomp

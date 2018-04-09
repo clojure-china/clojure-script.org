@@ -64,5 +64,6 @@
      {:style {:background-color :transparent,
               :font-family ui/font-code,
               :color :white,
-              :padding 8},
+              :padding 8,
+              :margin :auto},
       :highlight highlighter}))))

@@ -523,7 +523,7 @@
               :type :expr, :by "root", :at 1522949538507, :id "HJzcjpCXsf"
               :data {
                "T" {:type :leaf, :by "root", :at 1522949541070, :text "<>", :id "HJzcjpCXsfleaf"}
-               "j" {:type :leaf, :by "root", :at 1522949555727, :text "\"Site built with ClojureScript & Respo.", :id "rympopAXif"}
+               "j" {:type :leaf, :by "root", :at 1523241745677, :text "\"Site built with shadow-cljs & Respo.", :id "rympopAXif"}
               }
              }
             }
@@ -830,14 +830,7 @@
                   :type :expr, :by "root", :at 1522927646332, :id "H1ZUQ_Y7sz"
                   :data {
                    "T" {:type :leaf, :by "root", :at 1522927731637, :text ":inner-text", :id "H1ZUQ_Y7szleaf"}
-                   "j" {:type :leaf, :by "root", :at 1523199110979, :text "\"Back to the official one...", :id "S1l3dOtmsz"}
-                  }
-                 }
-                 "v" {
-                  :type :expr, :by "root", :at 1522927745421, :id "B1WFKdFmsz"
-                  :data {
-                   "T" {:type :leaf, :by "root", :at 1522927746520, :text ":target", :id "B1WFKdFmszleaf"}
-                   "j" {:type :leaf, :by "root", :at 1522927751688, :text "\"_blank", :id "HkxjtuF7iG"}
+                   "j" {:type :leaf, :by "root", :at 1523241572603, :text "\"Back to official", :id "S1l3dOtmsz"}
                   }
                  }
                  "x" {
@@ -1995,6 +1988,13 @@
                     :data {
                      "T" {:type :leaf, :by "root", :at 1522928161522, :text ":padding", :id "B1eDX5KQozleaf"}
                      "j" {:type :leaf, :by "root", :at 1522928163794, :text "8", :id "Hylq79YQoM"}
+                    }
+                   }
+                   "y" {
+                    :type :expr, :by "root", :at 1523241338669, :id "BJ7FZ8ujG"
+                    :data {
+                     "T" {:type :leaf, :by "root", :at 1523241339543, :text ":margin", :id "BJ7FZ8ujGleaf"}
+                     "j" {:type :leaf, :by "root", :at 1523241341887, :text ":auto", :id "rJg4F-UOjM"}
                     }
                    }
                   }
