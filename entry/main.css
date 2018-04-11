@@ -36,9 +36,11 @@ body * {
 .md-code-block code {font-family: Source Code Pro, menlo, monospace;}
 
 .md-block h3 {
-  font-family: Josefin Sans, Arial, sans-serif;
-  font-size:24px;
-  font-weight:300;
+  font-family: Hind, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 100;
+  margin-top: 48px;
+  margin-bottom: 16px;
 }
 
 .md-block.content .md-p {

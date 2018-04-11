@@ -1346,7 +1346,215 @@
           :type :expr, :by "root", :at 1522928949667, :id "rJR4Ttmiz"
           :data {
            "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
-           "j" {:type :leaf, :by "root", :at 1523413356074, :text "\"Clojure is a dialect of the Lisp programming language. Clojure is a general-purpose programming language with an emphasis on functional programming. ClojureScript is a compiler for Clojure that targets JavaScript.\n\n### Learning\n\n[Click here for an online ClojureScript REPL!](http://clojurescript.io/)\n\nClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/), [Video](https://lambdaisland.com/episodes/clojurescript-interop)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:", :id "HJxBSpK7jz"}
+           "j" {:type :leaf, :by "root", :at 1523460865235, :text "\"Clojure is a dialect of the Lisp programming language. Clojure is a general-purpose programming language with an emphasis on functional programming. ClojureScript is a compiler for Clojure that targets JavaScript.\n", :id "HJxBSpK7jz"}
+           "r" {
+            :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1522929001979, :text "{}", :id "SygbuatQsz"}
+             "j" {
+              :type :expr, :by "root", :at 1522990526339, :id "Hy-L6p_Eiz"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1522990528100, :text ":class-name", :id "r1eUppO4iG"}
+               "j" {:type :leaf, :by "root", :at 1522990532235, :text "\"content", :id "ByVO66O4oz"}
+              }
+             }
+            }
+           }
+          }
+         }
+         "Q" {
+          :type :expr, :by "root", :at 1523460830629, :id "BkvJijosG"
+          :data {
+           "T" {:type :leaf, :by "root", :at 1523460843445, :text "div", :id "BkvJijosGleaf"}
+           "j" {
+            :type :expr, :by "root", :at 1523460843718, :id "HyVgsoosf"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1523461207929, :text "{}", :id "rJfQxoiiiG"}
+             "j" {
+              :type :expr, :by "root", :at 1523461209787, :id "rkzDnjjoz"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1523461210672, :text ":style", :id "HJggP3ijiM"}
+               "j" {
+                :type :expr, :by "root", :at 1523461211002, :id "H1GXvnjosz"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523461211324, :text "{}", :id "SkWmwnjijf"}
+                 "j" {
+                  :type :expr, :by "root", :at 1523461211553, :id "SkED2sjsM"
+                  :data {
+                   "T" {:type :leaf, :by "root", :at 1523461218521, :text ":margin-top", :id "HyrXwhoosM"}
+                   "j" {:type :leaf, :by "root", :at 1523461224112, :text "48", :id "rkxjw2ojsz"}
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+           "r" {
+            :type :expr, :by "root", :at 1523460867871, :id "SJn-osoiz"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1523460883775, :text "<>", :id "SJn-osoizleaf"}
+             "j" {:type :leaf, :by "root", :at 1523460888000, :text "|Learning", :id "Hk-3MoosjM"}
+             "r" {
+              :type :expr, :by "root", :at 1523460889232, :id "H1eZQooioz"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1523460889594, :text "{}", :id "S1ZmjoiiM"}
+               "j" {
+                :type :expr, :by "root", :at 1523460930656, :id "S1eirsjosf"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523460932301, :text ":font-size", :id "rkoHijsiG"}
+                 "j" {:type :leaf, :by "root", :at 1523460933407, :text "24", :id "rkpSjjsjM"}
+                }
+               }
+               "r" {
+                :type :expr, :by "root", :at 1523460934232, :id "S1MCHoiosz"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523460935729, :text ":font-weight", :id "S1MCHoioszleaf"}
+                 "j" {:type :leaf, :by "root", :at 1523460937986, :text "100", :id "BJ-gIoiisz"}
+                }
+               }
+               "v" {
+                :type :expr, :by "root", :at 1523460939103, :id "r1b7IjssiM"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523460941585, :text ":font-family", :id "r1b7IjssiMleaf"}
+                 "j" {:type :leaf, :by "root", :at 1523461006306, :text "ui/font-normal", :id "SJe8Uojoif"}
+                }
+               }
+               "x" {
+                :type :expr, :by "root", :at 1523460955446, :id "r1xXPjossz"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523460958597, :text ":vertical-align", :id "r1xXPjosszleaf"}
+                 "j" {:type :leaf, :by "root", :at 1523460960383, :text ":middle", :id "HkePwjjijf"}
+                }
+               }
+              }
+             }
+            }
+           }
+           "v" {
+            :type :expr, :by "root", :at 1523460890864, :id "rJ77jiiif"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1523460891485, :text "=<", :id "rJ77jiiifleaf"}
+             "j" {:type :leaf, :by "root", :at 1523460893341, :text "16", :id "H1Vmijjiz"}
+             "r" {:type :leaf, :by "root", :at 1523460893992, :text "nil", :id "r1UXjsoof"}
+            }
+           }
+           "x" {
+            :type :expr, :by "root", :at 1523460894648, :id "HkwXoiisf"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1523460922622, :text "a", :id "HkwXoiisfleaf"}
+             "j" {
+              :type :expr, :by "root", :at 1523460896703, :id "BJxK7oissM"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1523460897053, :text "{}", :id "ryKmsjojG"}
+               "j" {
+                :type :expr, :by "root", :at 1523460897263, :id "B14KXoijsf"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523460898009, :text ":style", :id "Bk7YXsosjM"}
+                 "j" {
+                  :type :expr, :by "root", :at 1523460962115, :id "BkgqDijojz"
+                  :data {
+                   "D" {:type :leaf, :by "root", :at 1523460963057, :text "merge", :id "SJ-5voissz"}
+                   "T" {:type :leaf, :by "root", :at 1523460900995, :text "ui/button", :id "SyVcQojjsM"}
+                   "j" {
+                    :type :expr, :by "root", :at 1523460963537, :id "Sy2vsojoG"
+                    :data {
+                     "T" {:type :leaf, :by "root", :at 1523460963858, :text "{}", :id "BJBsPssosG"}
+                     "j" {
+                      :type :expr, :by "root", :at 1523460964055, :id "S1XhPsojof"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523460966592, :text ":vertical-align", :id "S1fnPsiijz"}
+                       "j" {:type :leaf, :by "root", :at 1523460968836, :text ":middle", :id "HJl1uioosG"}
+                      }
+                     }
+                     "r" {
+                      :type :expr, :by "root", :at 1523460971112, :id "rJe7diijiM"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523460975587, :text ":border-radius", :id "rJe7diijiMleaf"}
+                       "j" {:type :leaf, :by "root", :at 1523460978507, :text "\"16px", :id "S1xu_oijsG"}
+                      }
+                     }
+                     "v" {
+                      :type :expr, :by "root", :at 1523460981037, :id "Syxadsisoz"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523460982146, :text ":padding", :id "Syxadsisozleaf"}
+                       "j" {:type :leaf, :by "root", :at 1523460984717, :text "\"0 16px", :id "rk1FoissM"}
+                      }
+                     }
+                     "x" {
+                      :type :expr, :by "root", :at 1523460991709, :id "rkdYioisz"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523460995499, :text ":font-family", :id "rkdYioiszleaf"}
+                       "j" {:type :leaf, :by "root", :at 1523461000951, :text "ui/font-fancy", :id "H1nKsjjjG"}
+                      }
+                     }
+                     "y" {
+                      :type :expr, :by "root", :at 1523461011432, :id "SyZiqsjssM"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523461013337, :text ":font-size", :id "SyZiqsjssMleaf"}
+                       "j" {:type :leaf, :by "root", :at 1523461019232, :text "20", :id "HJv65soisM"}
+                      }
+                     }
+                     "yT" {
+                      :type :expr, :by "root", :at 1523461059496, :id "HJ-oTisojf"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523461063487, :text ":text-decoration", :id "HJ-oTisojfleaf"}
+                       "j" {:type :leaf, :by "root", :at 1523461064591, :text ":none", :id "BklAiosoz"}
+                      }
+                     }
+                     "yj" {
+                      :type :expr, :by "root", :at 1523461083467, :id "H1gQk3sojz"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523461085412, :text ":line-height", :id "H1gQk3sojzleaf"}
+                       "j" {:type :leaf, :by "root", :at 1523461094421, :text "\"32px", :id "BkLHy2oijG"}
+                      }
+                     }
+                     "yr" {
+                      :type :expr, :by "root", :at 1523461099071, :id "ryxml3jisM"
+                      :data {
+                       "T" {:type :leaf, :by "root", :at 1523461101591, :text ":display", :id "ryxml3jisMleaf"}
+                       "j" {:type :leaf, :by "root", :at 1523461105988, :text ":inline-block", :id "HJxIxhsojM"}
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+               "r" {
+                :type :expr, :by "root", :at 1523461025176, :id "SyeYssoooz"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523461027193, :text ":href", :id "SyeYssooozleaf"}
+                 "j" {:type :leaf, :by "root", :at 1523461075878, :text "\"http://clojurescript.io/", :id "S1HisjjjoM"}
+                }
+               }
+               "v" {
+                :type :expr, :by "root", :at 1523461050120, :id "S1fajjijM"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1523461051710, :text ":target", :id "S1fajjijMleaf"}
+                 "j" {:type :leaf, :by "root", :at 1523461078716, :text "\"_blank", :id "rkfEpisiiz"}
+                }
+               }
+              }
+             }
+             "r" {
+              :type :expr, :by "root", :at 1523460902361, :id "r1WC7ssjoz"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1523460902815, :text "<>", :id "r1WC7ssjozleaf"}
+               "j" {:type :leaf, :by "root", :at 1523460915910, :text "\"Get an online REPL", :id "Bk-J4sissf"}
+              }
+             }
+            }
+           }
+          }
+         }
+         "R" {
+          :type :expr, :by "root", :at 1522928949667, :id "SJw5qojjz"
+          :data {
+           "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
+           "j" {:type :leaf, :by "root", :at 1523460816916, :text "\"ClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/), [Video](https://lambdaisland.com/episodes/clojurescript-interop)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:", :id "HJxBSpK7jz"}
            "r" {
             :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
             :data {

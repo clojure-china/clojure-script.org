@@ -100,7 +100,30 @@
  (div
   {:style {:max-width 800, :margin :auto, :padding 16}}
   (comp-md-block
-   "Clojure is a dialect of the Lisp programming language. Clojure is a general-purpose programming language with an emphasis on functional programming. ClojureScript is a compiler for Clojure that targets JavaScript.\n\n### Learning\n\n[Click here for an online ClojureScript REPL!](http://clojurescript.io/)\n\nClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/), [Video](https://lambdaisland.com/episodes/clojurescript-interop)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:"
+   "Clojure is a dialect of the Lisp programming language. Clojure is a general-purpose programming language with an emphasis on functional programming. ClojureScript is a compiler for Clojure that targets JavaScript.\n"
+   {:class-name "content"})
+  (div
+   {:style {:margin-top 48}}
+   (<>
+    "Learning"
+    {:font-size 24, :font-weight 100, :font-family ui/font-normal, :vertical-align :middle})
+   (=< 16 nil)
+   (a
+    {:style (merge
+             ui/button
+             {:vertical-align :middle,
+              :border-radius "16px",
+              :padding "0 16px",
+              :font-family ui/font-fancy,
+              :font-size 20,
+              :text-decoration :none,
+              :line-height "32px",
+              :display :inline-block}),
+     :href "http://clojurescript.io/",
+     :target "_blank"}
+    (<> "Get an online REPL")))
+  (comp-md-block
+   "ClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/), [Video](https://lambdaisland.com/episodes/clojurescript-interop)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:"
    {:class-name "content"})
   (div
    {:style (merge {:width :auto})}
