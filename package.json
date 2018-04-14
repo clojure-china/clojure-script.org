@@ -7,7 +7,9 @@
     "watch": "shadow-cljs watch browser",
     "serve": "http-server dist -s",
     "repl": "rlwrap shadow-cljs clj-repl",
-    "build": "shadow-cljs clj-run build.main/build"
+    "build": "shadow-cljs clj-run build.main/build",
+    "upload": "clj -m build.upload",
+    "page": "shadow-cljs clj-run build.main/html"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "http-server": "^0.11.1",
-    "shadow-cljs": "^2.2.29"
+    "shadow-cljs": "^2.2.30"
   },
   "dependencies": {
     "escape-html": "^1.0.3",
