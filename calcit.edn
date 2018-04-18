@@ -1346,7 +1346,7 @@
           :type :expr, :by "root", :at 1522928949667, :id "rJR4Ttmiz"
           :data {
            "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
-           "j" {:type :leaf, :by "root", :at 1523460865235, :text "\"Clojure is a dialect of the Lisp programming language. Clojure is a general-purpose programming language with an emphasis on functional programming. ClojureScript is a compiler for Clojure that targets JavaScript.\n", :id "HJxBSpK7jz"}
+           "j" {:type :leaf, :by "root", :at 1524051647237, :text "\"### What is ClojureScript?\n\n[Clojure](https://clojure.org/) is a dialect of the Lisp programming language and a general-purpose programming language with an emphasis on functional programming. [ClojureScript](https://clojurescript.org/) is a compiler for Clojure that targets JavaScript.\n", :id "HJxBSpK7jz"}
            "r" {
             :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
             :data {

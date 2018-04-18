@@ -100,7 +100,7 @@
  (div
   {:style {:max-width 800, :margin :auto, :padding 16}}
   (comp-md-block
-   "Clojure is a dialect of the Lisp programming language. Clojure is a general-purpose programming language with an emphasis on functional programming. ClojureScript is a compiler for Clojure that targets JavaScript.\n"
+   "### What is ClojureScript?\n\n[Clojure](https://clojure.org/) is a dialect of the Lisp programming language and a general-purpose programming language with an emphasis on functional programming. [ClojureScript](https://clojurescript.org/) is a compiler for Clojure that targets JavaScript.\n"
    {:class-name "content"})
   (div
    {:style {:margin-top 48}}
