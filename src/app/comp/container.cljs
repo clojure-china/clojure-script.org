@@ -45,13 +45,13 @@
     (=< 8 nil)
     (<>
      "ClojureScript"
-     {:font-family ui/font-fancy, :color :white, :font-weight 100, :font-size 24}))
-   (div
-    {}
+     {:font-family ui/font-fancy, :color :white, :font-weight 100, :font-size 24})
+    (=< 8 nil)
     (a
      {:href "https://clojurescript.org/",
-      :inner-text "Back to official",
-      :style {:color (hsl 240 80 80), :font-family ui/font-fancy, :text-decoration :none}})))))
+      :inner-text "(Unofficial)",
+      :style {:color (hsl 240 80 80), :font-family ui/font-fancy, :text-decoration :none}}))
+   (div {}))))
 
 (defcomp
  comp-resources
