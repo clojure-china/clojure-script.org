@@ -43,10 +43,6 @@
               :background-position "center center",
               :background-size :cover}})
     (=< 8 nil)
-    (<>
-     "ClojureScript"
-     {:font-family ui/font-fancy, :color :white, :font-weight 100, :font-size 24})
-    (=< 8 nil)
     (a
      {:href "https://clojurescript.org/",
       :inner-text "(Unofficial)",
@@ -99,9 +95,6 @@
  ()
  (div
   {:style {:max-width 800, :margin :auto, :padding 16}}
-  (comp-md-block
-   "### What is ClojureScript?\n\n[Clojure](https://clojure.org/) is a dialect of the Lisp programming language and a general-purpose programming language with an emphasis on functional programming. [ClojureScript](https://clojurescript.org/) is a compiler for Clojure that targets JavaScript.\n"
-   {:class-name "content"})
   (div
    {:style {:margin-top 48}}
    (<>
@@ -157,6 +150,18 @@
     (div
      {:style {:background-image "linear-gradient(to right, #0f2242, #2452a1)"}}
      (comp-header)
+     (div
+      {:style {:color :white,
+               :font-weight 300,
+               :font-family ui/font-fancy,
+               :font-size 20,
+               :margin :auto,
+               :text-align :center,
+               :max-width 800,
+               :padding "0 16px"}}
+      (comp-md-block
+       "[Clojure](https://clojure.org/)[Script](https://clojurescript.org/) is a dialect of the Lisp and a general-purpose language with an emphasis on functional programming, that runs on JavaScript."
+       {:class-name "content on-dark"}))
      (comp-showcase (:case-idx store)))
     (=< nil 32)
     (comp-tools)

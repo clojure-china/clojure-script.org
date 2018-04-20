@@ -60,3 +60,7 @@ body * {
   font-family: Josefin sans, Helvetica Neue, Arial, sans-serif;
   font-size: 16px;
 }
+
+.md-block.content.on-dark a {
+  color: hsl(240,90%,86%);
+}

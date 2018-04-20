@@ -49,7 +49,7 @@
  (let [showcase (get showcases case-idx)]
    (div
     {:class-name "showcase",
-     :style (merge ui/center {:padding 16, :min-height 360, :overflow :auto})}
+     :style (merge ui/center {:padding 16, :min-height 320, :overflow :auto})}
     (div
      {}
      (<> (:text showcase) {:color :white, :font-size 16})
