@@ -1401,6 +1401,26 @@
            }
           }
          }
+         "N" {
+          :type :expr, :by "root", :at 1522928949667, :id "SyIAEzOnz"
+          :data {
+           "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
+           "j" {:type :leaf, :by "root", :at 1524274463463, :text "\"ClojureScript is a modern, functional & immutable data-oriented language with a great standard library that compiles down to self-contained & compact JavaScript bundles. Based on Clojure, it brings Lisp’s elegance and meta-programming to the JavaScript ecosystem.([By @orestis](https://clojureverse.org/t/how-do-you-introduce-clojurescript-to-beginners-in-one-sentence/2004/7))", :id "HJxBSpK7jz"}
+           "r" {
+            :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1522929001979, :text "{}", :id "SygbuatQsz"}
+             "j" {
+              :type :expr, :by "root", :at 1522990526339, :id "Hy-L6p_Eiz"
+              :data {
+               "T" {:type :leaf, :by "root", :at 1522990528100, :text ":class-name", :id "r1eUppO4iG"}
+               "j" {:type :leaf, :by "root", :at 1522990532235, :text "\"content", :id "ByVO66O4oz"}
+              }
+             }
+            }
+           }
+          }
+         }
          "Q" {
           :type :expr, :by "root", :at 1523460830629, :id "BkvJijosG"
           :data {
