@@ -40,7 +40,7 @@
          :type :expr, :time 1499755354983, :id "SJgC3cjTTW"
          :data {
           "T" {:type :leaf, :author "root", :time 1499755354983, :text "[]", :id "r1BodKcprZ"}
-          "j" {:type :leaf, :author "root", :time 1499755354983, :text "respo.macros", :id "ryLoOY5pHb"}
+          "j" {:type :leaf, :author "root", :time 1499755354983, :text "respo.core", :id "ryLoOY5pHb", :at 1541525754099, :by "root"}
           "r" {:type :leaf, :author "root", :time 1508946162679, :text ":refer", :id "SJDjOYqaHW"}
           "v" {
            :type :expr, :time 1499755354983, :id "H1do_K5aS-"
@@ -56,21 +56,6 @@
             "xT" {:type :leaf, :author "rJG4IHzWf", :time 1512359490531, :text "textarea", :id "BJtB8rGbG"}
             "y" {:type :leaf, :author "root", :time 1499755354983, :text "span", :id "r1Aj_YqaB-"}
             "yT" {:type :leaf, :by "root", :at 1522927757147, :text "a", :id "S1lrcOFQoz"}
-           }
-          }
-         }
-        }
-        "w" {
-         :type :expr, :author "root", :time 1505409896139, :id "HJZi6qjTp-"
-         :data {
-          "T" {:type :leaf, :author "root", :time 1505409897210, :text "[]", :id "S1ee_s4Oc-leaf"}
-          "j" {:type :leaf, :author "root", :time 1505409899596, :text "verbosely.core", :id "BJMujEu9Z"}
-          "r" {:type :leaf, :author "root", :time 1508946166387, :text ":refer", :id "BkbNdjV_q-"}
-          "v" {
-           :type :expr, :author "root", :time 1505409900510, :id "SkYV_iVOqW"
-           :data {
-            "T" {:type :leaf, :author "root", :time 1505409900971, :text "[]", :id "SkdEOsEOc-"}
-            "j" {:type :leaf, :author "root", :time 1505409901458, :text "verbosely!", :id "Hk-BujE_9W"}
            }
           }
          }
@@ -162,6 +147,21 @@
            :data {
             "T" {:type :leaf, :by "root", :at 1522986092694, :text "[]", :id "rkU4d3DNoM"}
             "j" {:type :leaf, :by "root", :at 1522986096478, :text "comp-showcase", :id "rJGBd3DEiM"}
+           }
+          }
+         }
+        }
+        "yx" {
+         :type :expr, :by "root", :at 1541525917012, :id "Tx-vc60C3V"
+         :data {
+          "T" {:type :leaf, :by "root", :at 1541525917315, :text "[]", :id "Tx-vc60C3Vleaf"}
+          "j" {:type :leaf, :by "root", :at 1541525926301, :text "build.util", :id "VczcQIu2Pw"}
+          "r" {:type :leaf, :by "root", :at 1541525927301, :text ":refer", :id "G_bduum-I"}
+          "v" {
+           :type :expr, :by "root", :at 1541525927496, :id "MvlfnTFwM-"
+           :data {
+            "T" {:type :leaf, :by "root", :at 1541525929397, :text "[]", :id "X7PDnl-yxw"}
+            "j" {:type :leaf, :by "root", :at 1541525932429, :text "inline-resource", :id "2BcgY3uH5"}
            }
           }
          }
@@ -377,7 +377,13 @@
                 :type :expr, :by "root", :at 1522928949667, :id "r12XBcD3f"
                 :data {
                  "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
-                 "j" {:type :leaf, :by "root", :at 1524242341322, :text "\"[Clojure](https://clojure.org/)[Script](https://clojurescript.org/) is a dialect of the Lisp and a general-purpose language with an emphasis on functional programming, that runs on JavaScript.", :id "HJxBSpK7jz"}
+                 "j" {
+                  :type :expr, :by "root", :at 1541526135286, :id "CyZpGyP2fg"
+                  :data {
+                   "T" {:type :leaf, :by "root", :at 1541526137734, :text "inline-resource", :id "HJxBSpK7jz"}
+                   "j" {:type :leaf, :by "root", :at 1541526142784, :text "\"content/clojure-is.md", :id "3w_DyMxZ0Q"}
+                  }
+                 }
                  "r" {
                   :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
                   :data {
@@ -1001,7 +1007,13 @@
           :type :expr, :by "root", :at 1522929026704, :id "BJloKaFXoM"
           :data {
            "T" {:type :leaf, :by "root", :at 1522929029255, :text "comp-md-block", :id "BJloKaFXoMleaf"}
-           "j" {:type :leaf, :by "root", :at 1523982024034, :text "\"You may also try [Planck](http://planck-repl.org/), [boot-cljs](https://github.com/boot-clj/boot-cljs) or [lein-cljsbuild](https://github.com/emezeske/lein-cljsbuild/) based on your needs.\n\n### Ecosystem\n\nThere are several libraries in ClojureScript that light up the community. They are famous:\n\n* [Reagent](http://reagent-project.github.io/) - Reagent: Minimalistic React for ClojureScript\n* [Rum](https://github.com/tonsky/rum) - Simple, decomplected, isomorphic HTML UI library for Clojure and ClojureScript\n* [om](https://github.com/omcljs/om) - A powerful interface to React, makes use of its object oriented structures.\n* [cljs-devtools](https://github.com/binaryage/cljs-devtools) - Better presentation of ClojureScript values in Chrome Devtools.\n* [Datascript](https://github.com/tonsky/datascript) - An immutable in-memory database and Datalog query engine in ClojureScript.\n* [re-frame](https://github.com/Day8/re-frame) - A Reagent Framework For Writing SPAs, in Clojurescript.\n* [core.async](https://github.com/clojure/core.async) - Facilities for async programming and communication in Clojure.\n* [sente](https://github.com/ptaoussanis/sente) - Realtime web comms for Clojure/Script.\n\n### ClojureScript and Clojure\n\nClojureScript and Clojure share the same syntax but distinguish by `.cljs` extension name. The most different part is the difference in host platforms, like JavaScript is known as single-threaded and restricted by browser APIs.\n\nLibraries of both sides release code on [Clojars](https://clojars.org/) in jar files.\n\n### ClojureScript and npm\n\nWith JavaScript InterOp, you may call some JavaScript code from in Clojure syntax. ClojureScript is designed to use features from host platform. You are free to import npm modules in ClojureScript, most of them will work correctly, especially in shadow-cljs and Lumo.\n\n### Immutable Data Structure\n\nClojure is a functional programming language. It provides the tools to avoid mutable state, provides functions as first-class objects, and emphasizes recursive iteration instead of side-effect based looping. Meanwhile immutable data structure happens to be a great tool React needs in reducing redundant virtual DOM renderings.\n\n### Communities\n\nJoin us on:\n\n* http://clojureverse.org/\n* http://clojurians.slack.com/\n* https://www.reddit.com/r/Clojure/\n* https://discord.gg/X6yrEjc\n\nAlso cool if you use [Twitter](http://twitter.com/scriptclojure).\n", :id "Sk0FTtmof"}
+           "j" {
+            :type :expr, :by "root", :at 1541525906104, :id "y875yEP2ur"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1541525908963, :text "inline-resource", :id "Sk0FTtmof"}
+             "j" {:type :leaf, :by "root", :at 1541525912920, :text "\"content/resource.md", :id "aTxFP39Vde"}
+            }
+           }
            "r" {
             :type :expr, :by "root", :at 1522929031007, :id "rJyqaKXiM"
             :data {
@@ -1405,7 +1417,13 @@
           :type :expr, :by "root", :at 1522928949667, :id "SyIAEzOnz"
           :data {
            "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
-           "j" {:type :leaf, :by "root", :at 1524274463463, :text "\"ClojureScript is a modern, functional & immutable data-oriented language with a great standard library that compiles down to self-contained & compact JavaScript bundles. Based on Clojure, it brings Lisp’s elegance and meta-programming to the JavaScript ecosystem.([By @orestis](https://clojureverse.org/t/how-do-you-introduce-clojurescript-to-beginners-in-one-sentence/2004/7))", :id "HJxBSpK7jz"}
+           "j" {
+            :type :expr, :by "root", :at 1541526068585, :id "vj2taqWrT"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1541526067857, :text "inline-resource", :id "HJxBSpK7jz"}
+             "j" {:type :leaf, :by "root", :at 1541526074676, :text "\"content/quote.md", :id "Nd-2berHIF"}
+            }
+           }
            "r" {
             :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
             :data {
@@ -1613,7 +1631,13 @@
           :type :expr, :by "root", :at 1522928949667, :id "SJw5qojjz"
           :data {
            "T" {:type :leaf, :by "root", :at 1522928956555, :text "comp-md-block", :id "rJR4Ttmizleaf"}
-           "j" {:type :leaf, :by "rJG4IHzWf", :at 1526023910172, :text "\"ClojureScript shares same syntax with Clojure but with different host APIs and environments. To Learn it:\n\n* [ClojureScript Syntax in 15 minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)\n* [Learn X in Y minutes](https://learnxinyminutes.com/docs/clojure/)\n* [ClojureScript: JavaScript Interop](http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/), [Video](https://lambdaisland.com/episodes/clojurescript-interop)\n* [ClojureScript Cheatsheet](http://cljs.info/cheatsheet/)\n* [Clojure for the Brave and True: Do Things](https://www.braveclojure.com/do-things/)\n* [Understanding Clojure's Persistent Vectors, pt. 1](https://hypirion.com/musings/understanding-persistent-vector-pt-1)\n* [ClojureScript 入门指南(Chinese)](http://cljs-book.clj.im/)\n\n### Compilers\n\nCompiling and hot-swapping ClojureScript programs require tools. Pick one of those as you need:", :id "HJxBSpK7jz"}
+           "j" {
+            :type :expr, :by "root", :at 1541526017237, :id "pTDyIwhl8T"
+            :data {
+             "T" {:type :leaf, :by "root", :at 1541526016525, :text "inline-resource", :id "HJxBSpK7jz"}
+             "j" {:type :leaf, :by "root", :at 1541526022659, :text "\"content/learning.md", :id "GBAp2dVrZ"}
+            }
+           }
            "r" {
             :type :expr, :by "root", :at 1522929001629, :id "SyGOTYQoG"
             :data {
@@ -1756,7 +1780,7 @@
                 :type :expr, :by "root", :at 1522948843069, :id "r1xXeoR7sM"
                 :data {
                  "T" {:type :leaf, :by "root", :at 1522948844657, :text ":name", :id "r1xXeoR7sMleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522948900695, :text "\"Figwheel", :id "H1-SxoAmoM"}
+                 "j" {:type :leaf, :by "root", :at 1541526619895, :text "\"figwheel-main", :id "H1-SxoAmoM"}
                 }
                }
                "T" {
@@ -1770,14 +1794,14 @@
                 :type :expr, :by "root", :at 1522948848853, :id "HkeKloRQiG"
                 :data {
                  "T" {:type :leaf, :by "root", :at 1522948852157, :text ":url", :id "HkeKloRQiGleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522948918119, :text "\"https://github.com/bhauman/lein-figwheel", :id "HyaliCmsM"}
+                 "j" {:type :leaf, :by "root", :at 1541526639863, :text "\"https://figwheel.org", :id "HyaliCmsM"}
                 }
                }
                "r" {
                 :type :expr, :by "root", :at 1522949431060, :id "rJgJraRQjM"
                 :data {
                  "T" {:type :leaf, :by "root", :at 1522949434092, :text ":description", :id "rJgJraRQjMleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522949436342, :text "\"Figwheel builds your ClojureScript code and hot loads it into the browser as you are coding!", :id "HyEGBaAXsf"}
+                 "j" {:type :leaf, :by "root", :at 1541526650126, :text "\"Figwheel Main builds your ClojureScript code and hot loads it as you are coding!", :id "HyEGBaAXsf"}
                 }
                }
               }
@@ -1874,7 +1898,7 @@
          :type :expr, :time 1499755354983, :id "SJgC3cjTTW"
          :data {
           "T" {:type :leaf, :author "root", :time 1499755354983, :text "[]", :id "r1BodKcprZ"}
-          "j" {:type :leaf, :author "root", :time 1499755354983, :text "respo.macros", :id "ryLoOY5pHb"}
+          "j" {:type :leaf, :author "root", :time 1499755354983, :text "respo.core", :id "ryLoOY5pHb", :at 1541525761898, :by "root"}
           "r" {:type :leaf, :author "root", :time 1508946162679, :text ":refer", :id "SJDjOYqaHW"}
           "v" {
            :type :expr, :time 1499755354983, :id "H1do_K5aS-"
@@ -1890,21 +1914,6 @@
             "xT" {:type :leaf, :author "rJG4IHzWf", :time 1512359490531, :text "textarea", :id "BJtB8rGbG"}
             "y" {:type :leaf, :author "root", :time 1499755354983, :text "span", :id "r1Aj_YqaB-"}
             "yT" {:type :leaf, :by "root", :at 1522927757147, :text "a", :id "S1lrcOFQoz"}
-           }
-          }
-         }
-        }
-        "w" {
-         :type :expr, :author "root", :time 1505409896139, :id "HJZi6qjTp-"
-         :data {
-          "T" {:type :leaf, :author "root", :time 1505409897210, :text "[]", :id "S1ee_s4Oc-leaf"}
-          "j" {:type :leaf, :author "root", :time 1505409899596, :text "verbosely.core", :id "BJMujEu9Z"}
-          "r" {:type :leaf, :author "root", :time 1508946166387, :text ":refer", :id "BkbNdjV_q-"}
-          "v" {
-           :type :expr, :author "root", :time 1505409900510, :id "SkYV_iVOqW"
-           :data {
-            "T" {:type :leaf, :author "root", :time 1505409900971, :text "[]", :id "SkdEOsEOc-"}
-            "j" {:type :leaf, :author "root", :time 1505409901458, :text "verbosely!", :id "Hk-BujE_9W"}
            }
           }
          }
@@ -1966,6 +1975,21 @@
            :data {
             "D" {:type :leaf, :by "root", :at 1522985277970, :text "[]", :id "rJUStDEsM"}
             "T" {:type :leaf, :by "root", :at 1522985270534, :text "highlighter", :id "BJANFvEsM"}
+           }
+          }
+         }
+        }
+        "yv" {
+         :type :expr, :by "root", :at 1541526242269, :id "C3i4QqUiew"
+         :data {
+          "T" {:type :leaf, :by "root", :at 1541526244822, :text "[]", :id "C3i4QqUiewleaf"}
+          "j" {:type :leaf, :by "root", :at 1541526248032, :text "build.util", :id "Z4nlN2KAlE"}
+          "r" {:type :leaf, :by "root", :at 1541526249346, :text ":refer", :id "ubcUoXJGOl"}
+          "v" {
+           :type :expr, :by "root", :at 1541526249556, :id "Ne7IDCflI"
+           :data {
+            "T" {:type :leaf, :by "root", :at 1541526249710, :text "[]", :id "3L8JsjkiXO"}
+            "j" {:type :leaf, :by "root", :at 1541526251761, :text "inline-resource", :id "kIPLS5Wtbc"}
            }
           }
          }
@@ -2211,10 +2235,20 @@
             :data {
              "T" {:type :leaf, :by "root", :at 1522927878198, :text "comp-md-block", :id "SkeqWYFmoGleaf"}
              "f" {
-              :type :expr, :by "root", :at 1522986628835, :id "BkptRDEjM"
+              :type :expr, :by "root", :at 1541526567128, :id "YxuI_JsAL3"
               :data {
-               "D" {:type :leaf, :by "root", :at 1522986630589, :text ":code", :id "S1g6YRD4sG"}
-               "T" {:type :leaf, :by "root", :at 1522986628200, :text "showcase", :id "rJx3YRwNjf"}
+               "D" {:type :leaf, :by "root", :at 1541526568124, :text "str", :id "AVwN71ud3g"}
+               "L" {:type :leaf, :by "root", :at 1541526571449, :text "\"```clojure", :id "bUpFMXjN8b"}
+               "P" {:type :leaf, :by "root", :at 1541526573323, :text "\\newline", :id "M8714UXdg"}
+               "T" {
+                :type :expr, :by "root", :at 1522986628835, :id "BkptRDEjM"
+                :data {
+                 "D" {:type :leaf, :by "root", :at 1522986630589, :text ":code", :id "S1g6YRD4sG"}
+                 "T" {:type :leaf, :by "root", :at 1522986628200, :text "showcase", :id "rJx3YRwNjf"}
+                }
+               }
+               "j" {:type :leaf, :by "root", :at 1541526577534, :text "\\newline", :id "N-IvgM7MP7"}
+               "r" {:type :leaf, :by "root", :at 1541526580097, :text "\"```", :id "HDiLhx9vUU"}
               }
              }
              "r" {
@@ -2306,7 +2340,13 @@
               :type :expr, :by "root", :at 1522986296662, :id "SkbB6P4jM"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986299242, :text ":code", :id "B1zSaDNoz"}
-               "T" {:type :leaf, :by "root", :at 1522991244858, :text "\"\n```clojure\n(defn transform* [person]\n   (-> person\n      (assoc :hair-color :gray)\n      (update :age inc)))\n\n(defn calculate* []\n   (->> (range 10)\n        (filter odd? ,,,)\n        (map #(* % %) ,,,)\n        (reduce + ,,,)))\n\n(as-> [:foo :bar] v\n  (map name v)\n  (first v)\n  (.substring v 1))\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526226021, :id "T7JCwdWxoY"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526228420, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526235970, :text "\"content/thread-macro.cljs", :id "xe3LpSddO"}
+                }
+               }
               }
              }
              "j" {
@@ -2339,7 +2379,13 @@
               :type :expr, :by "root", :at 1522986639524, :id "SJOqAPNsM"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986640538, :text ":code", :id "S1g_cADVjf"}
-               "T" {:type :leaf, :by "root", :at 1523199219738, :text "\"\n```clojure\n(let [[a b & the-rest] [:a :b :c :d]]\n  (println a b the-rest))\n;; => :a :b (:c :d)\n\n(let [{a :a d :d} {:a \"A\" :b \"B\" :c \"C\" :d \"D\"}]\n  (println a d))\n;; => A D\n\n(let [{:keys [a b], :as all} {:a \"A\" :b \"B\" :c \"C\" :d \"D\"}]\n  (println a b all))\n;; => A B {:a A :b B :c C :d D}\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526293159, :id "oh2qB34_j"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526297043, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526315787, :text "\"content/destructuring.cljs", :id "SdKv66aIe"}
+                }
+               }
               }
              }
              "j" {
@@ -2372,7 +2418,13 @@
               :type :expr, :by "root", :at 1522986657086, :id "ryeFo0w4iz"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986658190, :text ":code", :id "B1WYsCPEsM"}
-               "T" {:type :leaf, :by "root", :at 1522987024391, :text "\"\n```clojure\n(def m2 (js/Microsoft.Maps.Themes.BingTheme.))\n\n(def my-object (js-obj \"a\" 1 \"b\" true \"c\" nil))\n\n(def js-object #js {:a 1 :b 2})\n\n(def my-array (js->clj (.-globalArray js/window)))\n(def first-item (get my-array 0)) ;; 1\n\n(def my-obj (js->clj (.-globalObject js/window)))\n(def a (get my-obj \"a\")) ;; 1\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526334984, :id "t63hYVQRz"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526338587, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526342947, :text "\"content/inter-op.cljs", :id "t0VP9PeNf5"}
+                }
+               }
               }
              }
              "j" {
@@ -2405,7 +2457,13 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522990975277, :text "\"\n```clojure\n(def xform\n  (comp\n    (map #(+ 2 %))\n    (filter odd?)))\n\n(transduce xform + (range 0 10))\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526345754, :id "jnWE5_jVR"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526347749, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526355246, :text "\"content/transducer.cljs", :id "t3_afehdjT"}
+                }
+               }
               }
              }
              "j" {
@@ -2438,7 +2496,13 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522987444291, :text "\"\n```clojure\n(ns example\n  (:require [reagent.core :as r]))\n(defn simple-component []\n  [:div\n   [:p \"I am a component!\"]\n   [:p.someclass\n    \"I have \" [:strong \"bold\"]\n    [:span {:style {:color \"red\"}} \" and red \"]\n    \"text.\"]])\n\n(defn render-simple []\n  (r/render [simple-component]\n    (.-body js/document)))\n\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526379226, :id "mV1A268ih"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526381819, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526394972, :text "\"content/reagent.cljs", :id "at5LrFIObe"}
+                }
+               }
               }
              }
              "j" {
@@ -2471,7 +2535,13 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522988348459, :text "\"\n```clojure\n(:require [\"module-name\" :default defaultExport])\n(:require [\"module-name\" :as name])\n(:require [\"module-name\" :refer (export)])\n(:require [\"module-name\" :rename {export alias}])\n(:require [\"module-name\" :refer (export1 export2)])\n(:require [\"module-name\" :refer (export1) :rename {export2 alias2}])\n(:require [\"module-name\" :refer (export) :default defaultExport])\n(:require [\"module-name\" :as name :default defaultExport])\n(:require [\"module-name\"])\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526416929, :id "oO7P7TXkT"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526419888, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526423437, :text "\"content/js-deps.cljs", :id "6-mJ82eH2F"}
+                }
+               }
               }
              }
              "j" {
@@ -2504,7 +2574,13 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522989118377, :text "\"\n```clojure\n(def http (js/require \"http\"))\n;=> a lot of stuff you don't want to see\n(def head (clj->js {\"Content-Type\" \"text/plain\"}))\n;=> #js {:Content-Type \"text/plain\"}\n(def server\n  (.createServer http\n    (fn [req resp]\n      (.writeHead resp 200 head)\n      (.end resp \"Hello, World\\n\"))))\n;=> #<[object Object]>\n(.listen server 1337 \"127.0.0.1\")\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526446247, :id "aY_fiKlqL"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526452268, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526459491, :text "\"content/nodejs.cljs", :id "GfzyHCEUzW"}
+                }
+               }
               }
              }
              "j" {
@@ -2537,7 +2613,13 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522989569995, :text "\"\n```clojure\n(->> data\n     (partition-by (comp boolean :high))\n     (partition 2 1)\n     (mapcat (fn [[lbounds rbounds]]\n               (let [left-bound (last lbounds)\n                     left-val (hi-or-lo left-bound)]\n                 (map #(let [right-val (hi-or-lo %)\n                             diff (Math/abs (- right-val left-val))]\n                         {:extremes [left-bound %]\n                          :price-range diff\n                          :midpoint (+ (min right-val left-val)\n                                       (/ diff 2))})\n                      rbounds))))\n     (clojure.pprint/pprint))\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526475442, :id "XX57P-wGH"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526484277, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526488814, :text "\"content/data.cljs", :id "wi-1ajrp_D"}
+                }
+               }
               }
              }
              "j" {
@@ -2570,7 +2652,13 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522989756156, :text "\"\n```clojure\n(def car\n  (atom {:make \"Audi\"\n         :model \"Q3\"}))\n\n; @car\n;; {:make \"Audi\", :model \"Q3\"}\n\n(swap!\n car\n assoc :model \"Q5\")\n;; {:make \"Audi\", :model \"Q5\"}\n\n(reset! car {:make \"\" :model \"\"})\n;; {:make \"\", :model \"\"}\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526505543, :id "aXzam6Rm1"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526509827, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526515219, :text "\"content/atom.cljs", :id "slRsN6erk9"}
+                }
+               }
               }
              }
              "j" {
@@ -2603,7 +2691,13 @@
               :type :expr, :by "root", :at 1522986668806, :id "SJgHhADVof"
               :data {
                "D" {:type :leaf, :by "root", :at 1522986669959, :text ":code", :id "SybSnCwNsf"}
-               "T" {:type :leaf, :by "root", :at 1522991114123, :text "\"\n```clojure\n; Lists are sequences of values\n(:bun :beef-patty 9 \"yum!\")\n\n; Vectors allow random access\n[:gelato 1 2 -2]\n\n; Maps are associative data structures that\n; associate the key with its value\n{:eggs        2\n :lemon-juice 3.5\n :butter      1}\n```", :id "SkPM6vNiM"}
+               "T" {
+                :type :expr, :by "root", :at 1541526531205, :id "KdHhngYF-"
+                :data {
+                 "T" {:type :leaf, :by "root", :at 1541526533186, :text "inline-resource", :id "SkPM6vNiM"}
+                 "j" {:type :leaf, :by "root", :at 1541526537589, :text "\"content/edn.cljs", :id "ygu0haGv-a"}
+                }
+               }
               }
              }
              "j" {

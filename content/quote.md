@@ -1,0 +1,1 @@
+ClojureScript is a modern, functional & immutable data-oriented language with a great standard library that compiles down to self-contained & compact JavaScript bundles. Based on Clojure, it brings Lisp’s elegance and meta-programming to the JavaScript ecosystem.([By @orestis](https://clojureverse.org/t/how-do-you-introduce-clojurescript-to-beginners-in-one-sentence/2004/7))

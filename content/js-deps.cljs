@@ -1,0 +1,10 @@
+
+(:require ["module-name" :default defaultExport])
+(:require ["module-name" :as name])
+(:require ["module-name" :refer (export)])
+(:require ["module-name" :rename {export alias}])
+(:require ["module-name" :refer (export1 export2)])
+(:require ["module-name" :refer (export1) :rename {export2 alias2}])
+(:require ["module-name" :refer (export) :default defaultExport])
+(:require ["module-name" :as name :default defaultExport])
+(:require ["module-name"])

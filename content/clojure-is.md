@@ -1,0 +1,1 @@
+[Clojure](https://clojure.org/)[Script](https://clojurescript.org/) is a dialect of the Lisp and a general-purpose language with an emphasis on functional programming, that runs on JavaScript.
