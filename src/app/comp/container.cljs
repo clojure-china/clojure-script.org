@@ -123,20 +123,10 @@
      :url "http://shadow-cljs.org",
      :description "ClojureScript compilation made easy."})
    (comp-tool-card
-    {:name "Lumo",
-     :logo "http://cdn.tiye.me/logo/lumo.png",
-     :url "http://lumo-cljs.org",
-     :description "Fast, cross-platform, standalone ClojureScript environment."})
-   (comp-tool-card
     {:name "figwheel-main",
      :logo nil,
      :url "https://figwheel.org",
-     :description "Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"})
-   (comp-tool-card
-    {:name "cljs.main",
-     :logo nil,
-     :url "https://clojurescript.org/guides/quick-start",
-     :description "clj --main cljs.main --compile hello-world.core --repl"}))))
+     :description "Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"}))))
 
 (defcomp
  comp-container

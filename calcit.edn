@@ -1728,120 +1728,40 @@
              }
             }
            }
-           "wT" {
-            :type :expr, :by "root", :at 1522948836212, :id "SybfiAmoz"
+           "wD" {
+            :type :expr, :by "rJG4IHzWf", :at 1544974382876, :id "P4o1cpteOq"
             :data {
-             "T" {:type :leaf, :by "root", :at 1522948817070, :text "comp-tool-card", :id "Skpac0QjMleaf"}
-             "r" {
-              :type :expr, :by "root", :at 1522948837857, :id "ByeC1jAQsM"
+             "T" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text "comp-tool-card", :id "D8Fi9qFLDA"}
+             "j" {
+              :type :expr, :by "rJG4IHzWf", :at 1544974382876, :id "jZA-P_ZIOd"
               :data {
-               "D" {:type :leaf, :by "root", :at 1522948839276, :text "{}", :id "rk-AJo0mjz"}
-               "L" {
-                :type :expr, :by "root", :at 1522948843069, :id "r1xXeoR7sM"
-                :data {
-                 "T" {:type :leaf, :by "root", :at 1522948844657, :text ":name", :id "r1xXeoR7sMleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522948902462, :text "\"Lumo", :id "H1-SxoAmoM"}
-                }
-               }
-               "T" {
-                :type :expr, :by "root", :at 1522948840174, :id "BkWexiRXiG"
-                :data {
-                 "D" {:type :leaf, :by "root", :at 1522948842201, :text ":logo", :id "rJWeoCmiG"}
-                 "T" {:type :leaf, :by "root", :at 1522949170441, :text "\"http://cdn.tiye.me/logo/lumo.png", :id "S1eUki0QiG"}
-                }
-               }
+               "T" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text "{}", :id "6FXZ5wZpND"}
                "j" {
-                :type :expr, :by "root", :at 1522948848853, :id "HkeKloRQiG"
+                :type :expr, :by "rJG4IHzWf", :at 1544974382876, :id "FYIGauRCeZ"
                 :data {
-                 "T" {:type :leaf, :by "root", :at 1522948852157, :text ":url", :id "HkeKloRQiGleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522948887139, :text "\"http://lumo-cljs.org", :id "HyaliCmsM"}
+                 "T" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text ":name", :id "voYGhm4OOA"}
+                 "j" {:type :leaf, :by "rJG4IHzWf", :at 1544974581829, :text "\"figwheel-main", :id "2kHia-p4Df"}
                 }
                }
                "r" {
-                :type :expr, :by "root", :at 1522949389315, :id "S1xSfp0QiG"
+                :type :expr, :by "rJG4IHzWf", :at 1544974382876, :id "H-2s0Vd3VO"
                 :data {
-                 "T" {:type :leaf, :by "root", :at 1522949392550, :text ":description", :id "S1xSfp0QiGleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522949395982, :text "\"Fast, cross-platform, standalone ClojureScript environment.", :id "HklYfTRmsM"}
+                 "T" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text ":logo", :id "fOfqDxhI_n"}
+                 "j" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text "nil", :id "YvsCTF-pZP"}
                 }
                }
-              }
-             }
-            }
-           }
-           "wj" {
-            :type :expr, :by "root", :at 1522948836212, :id "rkWXsC7oG"
-            :data {
-             "T" {:type :leaf, :by "root", :at 1522948817070, :text "comp-tool-card", :id "Skpac0QjMleaf"}
-             "r" {
-              :type :expr, :by "root", :at 1522948837857, :id "ByeC1jAQsM"
-              :data {
-               "D" {:type :leaf, :by "root", :at 1522948839276, :text "{}", :id "rk-AJo0mjz"}
-               "L" {
-                :type :expr, :by "root", :at 1522948843069, :id "r1xXeoR7sM"
+               "v" {
+                :type :expr, :by "rJG4IHzWf", :at 1544974382876, :id "u2bTZFhRiQ"
                 :data {
-                 "T" {:type :leaf, :by "root", :at 1522948844657, :text ":name", :id "r1xXeoR7sMleaf"}
-                 "j" {:type :leaf, :by "root", :at 1541526619895, :text "\"figwheel-main", :id "H1-SxoAmoM"}
+                 "T" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text ":url", :id "3-4IR9p9NS"}
+                 "j" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text "\"https://figwheel.org", :id "WwudobnDbA"}
                 }
                }
-               "T" {
-                :type :expr, :by "root", :at 1522948840174, :id "BkWexiRXiG"
+               "x" {
+                :type :expr, :by "rJG4IHzWf", :at 1544974382876, :id "GVSwrD53BS"
                 :data {
-                 "D" {:type :leaf, :by "root", :at 1522948842201, :text ":logo", :id "rJWeoCmiG"}
-                 "b" {:type :leaf, :by "root", :at 1522948908245, :text "nil", :id "Bk-XEi0XiG"}
-                }
-               }
-               "j" {
-                :type :expr, :by "root", :at 1522948848853, :id "HkeKloRQiG"
-                :data {
-                 "T" {:type :leaf, :by "root", :at 1522948852157, :text ":url", :id "HkeKloRQiGleaf"}
-                 "j" {:type :leaf, :by "root", :at 1541526639863, :text "\"https://figwheel.org", :id "HyaliCmsM"}
-                }
-               }
-               "r" {
-                :type :expr, :by "root", :at 1522949431060, :id "rJgJraRQjM"
-                :data {
-                 "T" {:type :leaf, :by "root", :at 1522949434092, :text ":description", :id "rJgJraRQjMleaf"}
-                 "j" {:type :leaf, :by "root", :at 1541526650126, :text "\"Figwheel Main builds your ClojureScript code and hot loads it as you are coding!", :id "HyEGBaAXsf"}
-                }
-               }
-              }
-             }
-            }
-           }
-           "xL" {
-            :type :expr, :by "root", :at 1522948836212, :id "rJx29QuEiM"
-            :data {
-             "T" {:type :leaf, :by "root", :at 1522948817070, :text "comp-tool-card", :id "Skpac0QjMleaf"}
-             "r" {
-              :type :expr, :by "root", :at 1522948837857, :id "ByeC1jAQsM"
-              :data {
-               "D" {:type :leaf, :by "root", :at 1522948839276, :text "{}", :id "rk-AJo0mjz"}
-               "L" {
-                :type :expr, :by "root", :at 1522948843069, :id "r1xXeoR7sM"
-                :data {
-                 "T" {:type :leaf, :by "root", :at 1522948844657, :text ":name", :id "r1xXeoR7sMleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522987929844, :text "\"cljs.main", :id "H1-SxoAmoM"}
-                }
-               }
-               "T" {
-                :type :expr, :by "root", :at 1522948840174, :id "BkWexiRXiG"
-                :data {
-                 "D" {:type :leaf, :by "root", :at 1522948842201, :text ":logo", :id "rJWeoCmiG"}
-                 "b" {:type :leaf, :by "root", :at 1522948908245, :text "nil", :id "Bk-XEi0XiG"}
-                }
-               }
-               "j" {
-                :type :expr, :by "root", :at 1522948848853, :id "HkeKloRQiG"
-                :data {
-                 "T" {:type :leaf, :by "root", :at 1522948852157, :text ":url", :id "HkeKloRQiGleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522988083273, :text "\"https://clojurescript.org/guides/quick-start", :id "HyaliCmsM"}
-                }
-               }
-               "r" {
-                :type :expr, :by "root", :at 1522949431060, :id "rJgJraRQjM"
-                :data {
-                 "T" {:type :leaf, :by "root", :at 1522949434092, :text ":description", :id "rJgJraRQjMleaf"}
-                 "j" {:type :leaf, :by "root", :at 1522988078128, :text "\"clj --main cljs.main --compile hello-world.core --repl", :id "HyEGBaAXsf"}
+                 "T" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text ":description", :id "5lg1yiFk4X"}
+                 "j" {:type :leaf, :by "rJG4IHzWf", :at 1544974382876, :text "\"Figwheel Main builds your ClojureScript code and hot loads it as you are coding!", :id "f7gAwtup6O5"}
                 }
                }
               }
