@@ -1,26 +1,29 @@
 
 {:source-paths ["src" "cli"]
+ :cache-blockers #{cumulo-util.build}
  :dependencies [[mvc-works/hsl          "0.1.2"]
-                [mvc-works/shell-page   "0.1.9"]
-                [respo                  "0.10.0"]
-                [respo/ui               "0.3.9"]
+                [mvc-works/shell-page   "0.1.10"]
+                [respo                  "0.10.2"]
+                [respo/ui               "0.3.10"]
                 [respo/value            "0.2.5"]
                 [respo/markdown         "0.2.4"]
-                [respo/reel             "0.3.4"]]
+                [respo/reel             "0.3.4"]
+                [cumulo/util            "0.1.4"]
+                [org.clojure/core.incubator "0.1.4"]]
  :open-file-command ["subl" ["%s:%s:%s" :file :line :column]]
  :socket-repl {:port 0}
- :builds {:browser {:target :browser
-                    :output-dir "target/"
-                    :asset-path "./"
-                    :modules {:main {:entries [app.main]}}
-                    :devtools {:after-load app.main/reload!
-                               :http-root "target"
-                               :http-port 7000}
-                    :compiler-options {:infer-externs :auto}
-                    :release {:output-dir "dist/"
-                              :module-hash-names 8
-                              :build-options {:manifest-name "assets.edn"}}}
-          :ssr {:target :node-script
-                :output-to "target/ssr.js"
-                :main app.render/main!
-                :devtools {:after-load app.render/main!}}}}
+ :builds {:client {:target :browser
+                   :output-dir "target/"
+                   :asset-path "./"
+                   :modules {:client {:init-fn app.main/main!}}
+                   :devtools {:after-load app.main/reload!
+                              :http-root "target"
+                              :http-port 7000}
+                   :compiler-options {:infer-externs :auto}
+                   :release {:output-dir "dist/"
+                             :module-hash-names 8
+                             :build-options {:manifest-name "assets.edn"}}}
+          :page {:target :node-script
+                 :output-to "target/page.js"
+                 :main app.page/main!
+                 :devtools {:after-load app.page/main!}}}}

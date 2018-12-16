@@ -4,6 +4,7 @@
             [app.comp.container :refer [comp-container]]
             [app.updater :refer [updater]]
             [app.schema :as schema]
+            [app.config :as config]
             [reel.util :refer [listen-devtools!]]
             [reel.core :refer [reel-updater refresh-reel]]
             [reel.schema :as reel-schema]
@@ -26,6 +27,7 @@
 (def ssr? (some? (js/document.querySelector "meta.respo-ssr")))
 
 (defn main! []
+  (println "Running mode:" (if config/dev? "dev" "release"))
   (.registerLanguage hljs "clojure" clojure-lang)
   (if ssr? (render-app! realize-ssr!))
   (render-app! render!)
@@ -34,9 +36,9 @@
   (.addEventListener
    js/window
    "beforeunload"
-   (fn [] (.setItem js/localStorage (:storage schema/config) (pr-str (:store @*reel)))))
-  (let [raw (.getItem js/localStorage (:storage schema/config))]
-    (if (some? raw) (do (dispatch! :hydrate-storage (read-string raw)))))
+   (fn [] (.setItem js/localStorage (:storage-key config/site) (pr-str (:store @*reel)))))
+  (let [raw (.getItem js/localStorage (:storage-key config/site))]
+    (when (some? raw) (dispatch! :hydrate-storage (read-string raw))))
   (dispatch! :pick-case (rand-int 10))
   (println "App started."))
 
@@ -44,5 +46,3 @@
   (clear-cache!)
   (reset! *reel (refresh-reel @*reel schema/store updater))
   (println "Code updated."))
-
-(set! (.-onload js/window) main!)

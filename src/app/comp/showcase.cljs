@@ -7,7 +7,7 @@
              [defcomp cursor-> action-> mutation-> <> div button textarea span a]]
             [respo.comp.space :refer [=<]]
             [respo-md.comp.md :refer [comp-md comp-md-block]]
-            [app.schema :refer [dev?]]
+            [app.config :refer [dev?]]
             [app.util :refer [highlighter]]
             [build.util :refer [inline-resource]]))
 

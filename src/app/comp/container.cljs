@@ -8,7 +8,7 @@
             [respo.comp.space :refer [=<]]
             [reel.comp.reel :refer [comp-reel]]
             [respo-md.comp.md :refer [comp-md comp-md-block]]
-            [app.schema :refer [dev?]]
+            [app.config :refer [dev?]]
             [app.util :refer [highlighter]]
             [app.comp.showcase :refer [comp-showcase]]
             [build.util :refer [inline-resource]]))
