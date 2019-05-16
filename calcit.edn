@@ -1,4 +1,8 @@
 {
+ :users {
+  "rJG4IHzWf" {:id "rJG4IHzWf", :name "chen", :nickname "chen", :password "d41d8cd98f00b204e9800998ecf8427e", :avatar nil, :theme :star-trail}
+  "root" {:id "root", :name "root", :nickname "root", :password "d41d8cd98f00b204e9800998ecf8427e", :avatar nil, :theme :star-trail}
+ }
  :ir {
   :package "app"
   :files {
@@ -3980,6 +3984,19 @@
                  }
                 }
                }
+               "y" {
+                :type :expr, :by "rJG4IHzWf", :at 1558029397416, :id "u8rSCQ-eZM"
+                :data {
+                 "T" {:type :leaf, :by "rJG4IHzWf", :at 1558029403452, :text ":append-html", :id "u8rSCQ-eZMleaf"}
+                 "j" {
+                  :type :expr, :by "rJG4IHzWf", :at 1558029403855, :id "JIM_XYAQXd"
+                  :data {
+                   "T" {:type :leaf, :by "rJG4IHzWf", :at 1558029409785, :text "slurp", :id "6dmlnhHoR"}
+                   "j" {:type :leaf, :by "rJG4IHzWf", :at 1558029420623, :text "\"./entry/ga.html", :id "i8nMAk8wd"}
+                  }
+                 }
+                }
+               }
               }
              }
             }
@@ -4385,15 +4402,5 @@
    }
   }
  }
- :sessions {}
- :users {
-  "rJG4IHzWf" {:id "rJG4IHzWf", :name "chen", :nickname "chen", :password "d41d8cd98f00b204e9800998ecf8427e", :avatar nil, :theme :star-trail}
-  "root" {:id "root", :name "root", :nickname "root", :password "d41d8cd98f00b204e9800998ecf8427e", :avatar nil, :theme :star-trail}
- }
- :saved-files {}
  :configs {:storage-key "calcit.edn", :extension ".cljs", :output "src", :port 6001}
- :repl {
-  :alive? false
-  :logs {}
- }
 }
