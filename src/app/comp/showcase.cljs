@@ -9,39 +9,37 @@
             [respo-md.comp.md :refer [comp-md comp-md-block]]
             [app.config :refer [dev?]]
             [app.util :refer [highlighter]]
-            [build.util :refer [inline-resource]]))
+            [shadow.resource :refer [inline]]))
 
 (def showcases
-  {0 {:code (inline-resource "content/thread-macro.cljs"),
+  {0 {:code (inline "thread-macro.cljs"),
       :text "Thread macros",
       :url "https://clojure.org/guides/threading_macros"},
-   1 {:code (inline-resource "content/destructuring.cljs"),
+   1 {:code (inline "destructuring.cljs"),
       :text "Destructuring",
       :url "https://gist.github.com/john2x/e1dca953548bfdfb9844"},
-   2 {:code (inline-resource "content/inter-op.cljs"),
+   2 {:code (inline "inter-op.cljs"),
       :text "InterOp",
       :url "http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/"},
-   3 {:code (inline-resource "content/transducer.cljs"),
+   3 {:code (inline "transducer.cljs"),
       :text "Transducers",
       :url "https://stackoverflow.com/a/26322910/883571"},
-   4 {:code (inline-resource "content/reagent.cljs"),
+   4 {:code (inline "reagent.cljs"),
       :text "Reagent",
       :url "http://reagent-project.github.io/"},
-   5 {:code (inline-resource "content/js-deps.cljs"),
+   5 {:code (inline "js-deps.cljs"),
       :text "JS Dependencies",
       :url "https://code.thheller.com/blog/shadow-cljs/2017/11/10/js-dependencies-in-practice.html"},
-   6 {:code (inline-resource "content/nodejs.cljs"),
+   6 {:code (inline "nodejs.cljs"),
       :text "Node.js Server",
       :url "https://gist.github.com/semperos/83696c0ac168eb03ab1d"},
-   7 {:code (inline-resource "content/data.cljs"),
+   7 {:code (inline "data.cljs"),
       :text "Data manipulation",
       :url "https://stackoverflow.com/a/38754874/883571"},
-   8 {:code (inline-resource "content/atom.cljs"),
+   8 {:code (inline "atom.cljs"),
       :text "Atom",
       :url "https://clojuredocs.org/clojure.core/atom"},
-   9 {:code (inline-resource "content/edn.cljs"),
-      :text "EDN",
-      :url "https://learnxinyminutes.com/docs/edn/"}})
+   9 {:code (inline "edn.cljs"), :text "EDN", :url "https://learnxinyminutes.com/docs/edn/"}})
 
 (defcomp
  comp-showcase
