@@ -11,7 +11,7 @@
             [app.config :refer [dev?]]
             [app.util :refer [highlighter]]
             [app.comp.showcase :refer [comp-showcase]]
-            [build.util :refer [inline-resource]]))
+            [shadow.resource :refer [inline]]))
 
 (defcomp
  comp-footer
@@ -54,7 +54,7 @@
  ()
  (div
   {:style {:max-width 800, :margin :auto, :padding 16}}
-  (comp-md-block (inline-resource "content/resource.md") {:class-name "content"})))
+  (comp-md-block (inline "resource.md") {:class-name "content"})))
 
 (defcomp
  comp-tool-card
@@ -93,7 +93,7 @@
  ()
  (div
   {:style {:max-width 800, :margin :auto, :padding 16}}
-  (comp-md-block (inline-resource "content/quote.md") {:class-name "content"})
+  (comp-md-block (inline "quote.md") {:class-name "content"})
   (div
    {:style {:margin-top 48}}
    (<>
@@ -114,7 +114,7 @@
      :href "http://clojurescript.io/",
      :target "_blank"}
     (<> "Get an online REPL")))
-  (comp-md-block (inline-resource "content/learning.md") {:class-name "content"})
+  (comp-md-block (inline "learning.md") {:class-name "content"})
   (div
    {:style (merge {:width :auto})}
    (comp-tool-card
@@ -146,9 +146,7 @@
                :text-align :center,
                :max-width 800,
                :padding "0 16px"}}
-      (comp-md-block
-       (inline-resource "content/clojure-is.md")
-       {:class-name "content on-dark"}))
+      (comp-md-block (inline "clojure-is.md") {:class-name "content on-dark"}))
      (comp-showcase (:case-idx store)))
     (=< nil 32)
     (comp-tools)
