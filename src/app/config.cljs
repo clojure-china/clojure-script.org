@@ -18,8 +18,6 @@
   {:dev-ui "http://localhost:8100/main.css",
    :release-ui "http://cdn.tiye.me/favored-fonts/main.css",
    :cdn-url "http://cdn.tiye.me/clojure-script-org/",
-   :cdn-folder "tiye.me:cdn/clojure-script-org",
    :title "ClojureScript, beginners' home page",
    :icon "http://cdn.tiye.me/logo/cljs.png",
-   :storage-key "clojure-script.org",
-   :upload-folder "tiye.me:repo/clojure-china/clojure-script.org/"})
+   :storage-key "clojure-script.org"})
