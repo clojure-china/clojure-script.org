@@ -4,14 +4,14 @@
  :dependencies [[mvc-works/hsl          "0.1.2"]
                 [mvc-works/shell-page   "0.1.10"]
                 [respo                  "0.10.11"]
-                [respo/ui               "0.3.12"]
+                [respo/ui               "0.3.13"]
                 [respo/value            "0.2.5"]
                 [respo/markdown         "0.2.4"]
-                [respo/reel             "0.3.4"]
-                [cumulo/util            "0.1.10-a1"]
+                [respo/reel             "0.3.5"]
+                [cumulo/util            "0.1.10"]
+                [medley                 "1.2.0"]
                 [org.clojure/core.incubator "0.1.4"]]
  :open-file-command ["subl" ["%s:%s:%s" :file :line :column]]
- :socket-repl {:port 0}
  :dev-http {7000 "target/"}
  :builds {:client {:target :browser
                    :output-dir "target/"
