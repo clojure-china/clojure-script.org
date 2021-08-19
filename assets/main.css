@@ -15,11 +15,11 @@ body * {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: hsla(0,0%,100%);
+  background-color: hsl(218deg 63% 90%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: hsla(200,100%,76%,0.8);
+  background-color: hsl(218deg 63% 39%);
 }
 
 ::-webkit-scrollbar-corner {
