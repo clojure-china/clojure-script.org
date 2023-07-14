@@ -19,14 +19,15 @@
   "author": "jiyinyiyong",
   "license": "MIT",
   "devDependencies": {
-    "bottom-tip": "^0.1.2",
-    "vite": "^2.9.16"
+    "bottom-tip": "^0.1.5",
+    "vite": "^4.3.9"
   },
   "dependencies": {
-    "@calcit/procs": "^0.4.16",
+    "@calcit/procs": "^0.7.3",
+    "@calcit/std": "^0.0.2",
     "escape-html": "^1.0.3",
-    "highlight.js": "^10.4.1",
-    "feather-icons": "^4.22.1",
-    "shortid": "^2.2.14"
+    "feather-icons": "^4.29.0",
+    "highlight.js": "^11.8.0",
+    "shortid": "^2.2.16"
   }
 }
