@@ -1,33 +1,32 @@
 {
-  "name": "calcit-workflow",
+  "name": "clojure-script-org",
   "version": "0.1.0",
-  "description": "ClojureScript workflow using Calcit Editor",
-  "main": "index.js",
+  "description": "ClojureScript beginners home page built with Calcit",
+  "private": true,
+  "packageManager": "yarn@4.18.0",
   "scripts": {
-    "watch": "shadow-cljs watch client",
-    "serve": "http-server dist -s",
-    "build-cdn": "shadow-cljs clj-run build.main/build-cdn",
-    "page": "shadow-cljs clj-run build.main/page",
-    "build": "shadow-cljs clj-run build.main/build",
-    "ln": "cd target && rm -f entry && ln -s ../entry",
-    "up": "yarn build-cdn && tiye-up"
+    "watch": "calcit -w js",
+    "serve": "vite --host 127.0.0.1",
+    "check": "calcit --check-only --all-defs",
+    "build": "calcit js && vite build --base=./"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mvc-works/calcit-workflow.git"
+    "url": "git@github.com:clojure-china/clojure-script.org.git"
   },
   "author": "jiyinyiyong",
   "license": "MIT",
   "devDependencies": {
     "bottom-tip": "^0.1.5",
-    "vite": "^4.3.9"
+    "vite": "8.3.1"
   },
   "dependencies": {
-    "@calcit/procs": "^0.7.3",
+    "@calcit/procs": "0.29.0",
     "@calcit/std": "^0.0.2",
+    "cirru-color": "^0.2.4",
+    "copy-text-to-clipboard": "^3.2.2",
+    "dayjs": "^1.11.13",
     "escape-html": "^1.0.3",
-    "feather-icons": "^4.29.0",
-    "highlight.js": "^11.8.0",
-    "shortid": "^2.2.16"
+    "highlight.js": "^11.8.0"
   }
 }
