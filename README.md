@@ -8,16 +8,22 @@ ClojureScript, beginners' home page
 
 ### Workflow
 
-The application uses Calcit 0.29.0 and matching `@calcit/procs`, with stable
+The application uses paired Calcit / `@calcit/procs` 0.30.1-alpha.5, with stable
 module releases pinned in `deps.cirru`. Node.js 24 and Yarn 4.18.0 are used for
 the frontend build. `content/*.cljs` are displayed ClojureScript examples, not
 Calcit application source.
+
+This is a 0.30.1 candidate migration, not a completed stable 0.30.1 release:
+the stable release currently has no CLI assets. Visitor navigation, the legacy
+saved Map format and random showcase selection are preserved. The header logo
+uses HTTPS at the same host/path, and site credits now name Calcit and Respo.
 
 ```sh
 caps --strict --ci
 yarn install --immutable
 caps verify --toolchain
 yarn check
+calcit fix --workflow strict --verify
 calcit test --require-match
 yarn build
 ```
@@ -31,7 +37,7 @@ open boundaries, so this is not a claim of zero Dynamic type debt.
 Stored data retains the original Map field format and is decoded into Store
 when restored. Startup still chooses a random showcase, as before.
 
-CI checks all admitted definitions and all application public definitions,
+CI checks all admitted definitions, the full strict workflow and all application public definitions,
 runs the two attached updater/hydration tests, and builds the frontend.
 Local acceptance also includes real browser rendering, code highlighting,
 showcase clicks, and refresh/hydration without runtime errors.

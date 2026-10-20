@@ -48,8 +48,10 @@
                       :text-decoration :none
                     :href |https://github.com/clojure-china/clojure-script.org
                     :target |_blank
-                  <> "|Site built with shadow-cljs & Respo."
+                  <> "|Site built with Calcit & Respo."
           :examples $ []
+          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
+            :args $ []
         'comp-header $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-header ()
             div
@@ -64,7 +66,7 @@
                       d! $ :: :pick-case $ rand-int 10
                   div $ {} $ :style
                     {}
-                      :background-image $ str "|url(http://cdn.tiye.me/logo/cljs.png)"
+                      :background-image $ str "|url(https://cdn.tiye.me/logo/cljs.png)"
                       :width 40
                       :height 40
                       :background-position "|center center"
@@ -77,6 +79,8 @@
                       :text-decoration :none
                 div $ {}
           :examples $ []
+          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
+            :args $ []
         'comp-resources $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-resources ()
             div
@@ -84,6 +88,8 @@
               comp-md-block (inline |resource.md)
                 {} $ :class-name |content
           :examples $ []
+          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
+            :args $ []
         'comp-tool-card $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-tool-card (info)
             div
@@ -143,21 +149,23 @@
                 comp-tool-card $ ToolInfo :name |shadow-cljs :logo (Option :some |http://cdn.tiye.me/logo/shadow-cljs.png) :url |http://shadow-cljs.org :description "|ClojureScript compilation made easy."
                 comp-tool-card $ ToolInfo :name |figwheel-main :logo (Option :none) :url |https://figwheel.org :description "|Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"
           :examples $ []
+          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
+            :args $ []
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.comp.container
           :require
-            [] respo-ui.core :refer $ [] hsl
-            [] respo-ui.core :as ui
-            [] respo.core :refer $ [] defcomp >> <> div button textarea span a
-            [] respo.comp.space :refer $ [] =<
-            [] reel.comp.reel :refer $ [] comp-reel
-            [] respo-md.comp.md :refer $ [] comp-md comp-md-block
-            [] app.config :refer $ [] dev?
-            [] app.util :refer $ [] highlighter inline
-            [] app.comp.showcase :refer $ [] comp-showcase
+            respo-ui.core :refer $ hsl
+            respo-ui.core :as ui
+            respo.core :refer $ defcomp >> <> div button textarea span a
+            respo.comp.space :refer $ =<
+            reel.comp.reel :refer $ comp-reel
+            respo-md.comp.md :refer $ comp-md comp-md-block
+            app.config :refer $ dev?
+            app.util :refer $ highlighter inline
+            app.comp.showcase :refer $ comp-showcase
             |@calcit/std :refer $ rand-int
-            [] app.schema :refer $ [] ToolInfo
-            [] reel.typed-compat :as reel-view
+            app.schema :refer $ ToolInfo
+            reel.typed-compat :as reel-view
     'app.comp.showcase $ %{} 'FileEntry
       :defs $ {}
         'comp-showcase $ %{} 'CodeEntry (:doc |)
@@ -207,14 +215,14 @@
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.comp.showcase
           :require
-            [] respo-ui.core :refer $ [] hsl
-            [] respo-ui.core :as ui
-            [] respo.core :refer $ [] defcomp cursor-> action-> mutation-> <> div button textarea span a
-            [] respo.comp.space :refer $ [] =<
-            [] respo-md.comp.md :refer $ [] comp-md comp-md-block
-            [] app.config :refer $ [] dev?
-            [] app.util :refer $ [] highlighter inline
-            [] app.schema :refer $ [] Showcase
+            respo-ui.core :refer $ hsl
+            respo-ui.core :as ui
+            respo.core :refer $ defcomp cursor-> action-> mutation-> <> div button textarea span a
+            respo.comp.space :refer $ =<
+            respo-md.comp.md :refer $ comp-md comp-md-block
+            app.config :refer $ dev?
+            app.util :refer $ highlighter inline
+            app.schema :refer $ Showcase
     'app.config $ %{} 'FileEntry
       :defs $ {}
         'Site $ %{} 'CodeEntry (:doc |)
@@ -317,20 +325,20 @@
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.main
           :require
-            [] respo.core :refer $ [] render! clear-cache! realize-ssr!
-            [] app.comp.container :refer $ [] comp-container
-            [] app.updater :refer $ [] updater decode-action
-            [] app.schema :as schema
-            [] app.config :as config
-            [] reel.util :refer $ [] listen-devtools!
-            [] |highlight.js/lib/languages/clojure :default clojure-lang
+            respo.core :refer $ render! clear-cache! realize-ssr!
+            app.comp.container :refer $ comp-container
+            app.updater :refer $ updater decode-action
+            app.schema :as schema
+            app.config :as config
+            reel.util :refer $ listen-devtools!
+            |highlight.js/lib/languages/clojure :default clojure-lang
             |./calcit.build-errors :default build-errors
             |bottom-tip :default hud!
             |@calcit/std :refer $ rand-int
-            [] reel.typed :as typed-reel
-            [] js-ffi.shared :as host
-            [] app.util :refer $ [] register-language!
-            [] js-ffi.browser :as browser
+            reel.typed :as typed-reel
+            js-ffi.shared :as host
+            app.util :refer $ register-language!
+            js-ffi.browser :as browser
     'app.schema $ %{} 'FileEntry
       :defs $ {}
         'Action $ %{} 'CodeEntry (:doc |)
@@ -424,8 +432,8 @@
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.updater
           :require
-            [] respo.cursor :refer $ [] update-state-tree
-            [] app.schema :refer $ [] Store Action
+            respo.cursor :refer $ update-state-tree
+            app.schema :refer $ Store Action
     'app.util $ %{} 'FileEntry
       :defs $ {}
         'HighlightHost $ %{} 'CodeEntry (:doc |)
@@ -484,4 +492,4 @@
           :schema $ :: 'Map 'String 'String
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.util
-          :require ([] |escape-html :default escape-html) ([] |highlight.js :default hljs)
+          :require (|escape-html :default escape-html) (|highlight.js :default hljs)
