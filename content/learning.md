@@ -15,4 +15,4 @@ ClojureScript shares same syntax with Clojure but with different host APIs and e
 
 By following [official Quick Start](https://clojurescript.org/guides/quick-start) you can compile your project with [cljs.main](https://clojurescript.org/guides/quick-start). It's the core library of compiling the language.
 
-However in real projects you will very likely to need hot code swapping and npm integrations. This site is built with [shadow-cljs](http://shadow-cljs.org) along npm modules. Besides shadow-cljs, there are several tools you can choose:
+However in real projects you will very likely to need hot code swapping and npm integrations. One option is [shadow-cljs](http://shadow-cljs.org) along npm modules. Besides shadow-cljs, there are several tools you can choose:

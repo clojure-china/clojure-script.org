@@ -38,6 +38,7 @@ jobs:
           calcit edit format
           git diff --exit-code -- calcit.cirru
           calcit --check-only --all-defs --format json
+          calcit fix --workflow strict --verify --format json
           calcit --check-only --ns app.config --ns app.main --ns app.schema --ns app.updater --ns app.util --ns app.comp.container --ns app.comp.showcase --summary-only --format json
           calcit analyze weak-types --ns-prefix app --only deprecated-call --summary-only --format json | jq -e '.data.summary.calls == 0'
           calcit analyze weak-types --only dynamic-method --summary-only --format json | jq -e '.data.summary.findings == 0'
