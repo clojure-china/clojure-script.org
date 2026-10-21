@@ -268,15 +268,15 @@
             println "|Running mode:" $ if config/dev? |dev |release
             if config/dev? $ load-console-formatter!
             register-language! |clojure clojure-lang
-            render-app!
-            add-watch! *reel :changes $ fn (r p) (render-app!)
-            listen-devtools! |a dispatch!
-            browser/add-event-listener! |beforeunload $ fn (event) (save-store!)
             match
               browser/storage-get $ :storage-key config/site
               (:some raw)
                 dispatch! $ :: :hydrate-storage $ parse-cirru-edn raw
               (:none) &unit
+            render-app!
+            add-watch! *reel :changes $ fn (r p) (render-app!)
+            listen-devtools! |a dispatch!
+            browser/add-event-listener! |beforeunload $ fn (event) (save-store!)
             dispatch! $ :: :pick-case $ rand-int 10
             println "|App started."
           :examples $ []
