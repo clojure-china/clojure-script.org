@@ -27,6 +27,7 @@ jobs:
           deps-file: deps.cirru
       - name: Install dependencies
         run: |
+          set -euo pipefail
           corepack enable
           corepack prepare yarn@4.18.0 --activate
           caps --strict --ci
@@ -38,16 +39,21 @@ jobs:
           calcit edit format
           git diff --exit-code -- calcit.cirru
           calcit --check-only --all-defs --format json
-          calcit fix --workflow strict --verify --format json
+          calcit fix --workflow strict --verify --format json | jq -e '.data.workflow.status == "passed" and .diagnostics == []'
           calcit --check-only --ns app.config --ns app.main --ns app.schema --ns app.updater --ns app.util --ns app.comp.container --ns app.comp.showcase --summary-only --format json
           calcit analyze weak-types --ns-prefix app --only deprecated-call --summary-only --format json | jq -e '.data.summary.calls == 0'
           calcit analyze weak-types --only dynamic-method --summary-only --format json | jq -e '.data.summary.findings == 0'
           calcit test --require-match --summary-only --format json
       - name: Build frontend
         run: |
+          set -euo pipefail
           calcit js
-          yarn vite build --base="https://cos-sh.tiye.me/${GITHUB_REPOSITORY}/"
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+          base_url="https://cos-sh.tiye.me/${GITHUB_REPOSITORY}/"
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            base_url="./"
+          fi
+          yarn vite build --base="$base_url"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: client-dist
           path: dist/
@@ -64,7 +70,7 @@ jobs:
       cancel-in-progress: false
       queue: max
     steps:
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: client-dist
           path: dist/
