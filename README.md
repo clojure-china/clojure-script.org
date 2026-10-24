@@ -9,8 +9,8 @@ ClojureScript, beginners' home page
 ### Workflow
 
 使用者影响：应用使用精确配套正式 Calcit / `@calcit/procs` **0.30.1**，以及
-Respo 0.16.124、Reel 0.6.41、Markdown 0.4.59、UI 0.8.0、js-ffi 0.2.5
-（传递 Router 0.8.37），Node.js 24 / Yarn 4.18.0。升级后完整刷新，UI 0.8
+Respo 0.16.126、Reel 0.6.42、Markdown 0.4.60、UI 0.8.1、js-ffi 0.2.6
+（传递 Router 0.8.38），Node.js 24 / Yarn 4.18.0、Vite 8.3.3。升级后完整刷新，UI 0.8
 基础样式可能改变外观。`content/*.cljs` 是展示用 ClojureScript 示例，不是待迁移的 Calcit 应用源码。
 
 原导航、展示内容、高亮、Map 存档字段与启动时随机展示选择保持不变。
@@ -37,13 +37,16 @@ open boundaries, so this is not a claim of zero Dynamic type debt.
 Stored data retains the original Map field format and is decoded into Store
 when restored. Startup still chooses a random showcase, as before.
 
-CI checks all admitted definitions, the full strict workflow and all application public definitions,
+本轮迁移旧 Map merge（单参数恒等包装直接去掉）和等价静态 CSS 写法；
+事件、watcher、EventHost 及原无声明的 render-app! 按真实生产者补全合同。
+随机选择、展示示例、原 HUD、存档恢复及全部原测试保持，不增加强转、预算或验证脚本。
+
+CI checks all admitted definitions and all application public definitions through all-defs, plus the full strict workflow,
 runs the two attached updater/hydration tests, and builds the frontend.
 旧 alpha.5 曾完成真实浏览器渲染、高亮、展示切换与刷新验收；这不替代本轮正式图的
 CI 和实际浏览器证据。保留已有两项 updater/hydration 测试，不新增验证脚本或预算。
 
-Yarn 恢复默认 Git 审批与包等待期，只预批准精确 `@calcit/procs@0.30.1`，不再
-通配批准任意 Git 仓库或关闭包等待期。
+Yarn 使用默认 Git 审批与包等待期，不保留 procs 预批准、不通配批准任意 Git 仓库或关闭包等待期。
 
 Main/master deployment uploads frontend resources through
 `worktools/cos-upload-action` with built-in public checksum verification. The
