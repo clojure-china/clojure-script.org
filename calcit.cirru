@@ -16,13 +16,13 @@
                 store $ :store reel
                 states $ :states store
               div
-                {} $ :style $ merge ui/global
-                  {} (:background-color :white) (:font-size 16)
+                {} $ :style $ .merge ui/global
+                  {} (:background-color |white) (:font-size |16px)
                 div
                   {} $ :style $ {} (:background-image "|linear-gradient(to right, #0f2242, #2452a1)")
                   comp-header
                   div
-                    {} $ :style $ {} (:color :white) (:font-weight 300) (:font-family ui/font-fancy) (:font-size 20) (:margin :auto) (:text-align :center) (:max-width 800) (:padding "|0 16px")
+                    {} $ :style $ {} (:color |white) (:font-weight |300) (:font-family ui/font-fancy) (:font-size |20px) (:margin |auto) (:text-align |center) (:max-width |800px) (:padding "|0 16px")
                     comp-md-block (inline |clojure-is.md)
                       {} $ :class-name "|content on-dark"
                   comp-showcase $ :case-idx store
@@ -38,14 +38,14 @@
         'comp-footer $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-footer ()
             div
-              {} $ :style $ {} (:background-color |#292d2e) (:height 200) (:padding 16)
+              {} $ :style $ {} (:background-color |#292d2e) (:height |200px) (:padding |16px)
               div
-                {} $ :style $ {} (:max-width 800) (:margin :auto)
+                {} $ :style $ {} (:max-width |800px) (:margin |auto)
                 a
                   {}
                     :style $ {}
                       :color $ hsl 240 80 80
-                      :text-decoration :none
+                      :text-decoration |none
                     :href |https://github.com/clojure-china/clojure-script.org
                     :target |_blank
                   <> "|Site built with Calcit & Respo."
@@ -55,28 +55,32 @@
         'comp-header $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-header ()
             div
-              {} $ :style $ {} (:padding 16)
+              {} $ :style $ {} (:padding |16px)
               div
-                {} $ :style $ merge ui/row-parted
-                  {} (:max-width 800) (:margin :auto)
+                {} $ :style $ .merge ui/row-parted
+                  {} (:max-width |800px) (:margin |auto)
                 div
                   {}
-                    :style $ merge ui/row-center $ {} (:cursor :pointer)
+                    :style $ .merge ui/row-center $ {} (:cursor |pointer)
                     :on-click $ fn (e d!)
+                      hint-fn $ {} (:return 'Unit)
+                        :args $ [] (:: 'Map 'Tag 'Dynamic)
+                          :: 'Fn $ {} (:rest 'Dynamic) (:return 'Unit)
+                            :args $ [] 'Dynamic
                       d! $ :: :pick-case $ rand-int 10
                   div $ {} $ :style
                     {}
                       :background-image $ str "|url(https://cdn.tiye.me/logo/cljs.png)"
-                      :width 40
-                      :height 40
+                      :width |40px
+                      :height |40px
                       :background-position "|center center"
-                      :background-size :cover
+                      :background-size |cover
                   =< 8 nil
                   a $ {} (:href |https://clojurescript.org/) (:inner-text "|(Unofficial)")
                     :style $ {}
                       :color $ hsl 240 80 80
                       :font-family ui/font-fancy
-                      :text-decoration :none
+                      :text-decoration |none
                 div $ {}
           :examples $ []
           :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
@@ -84,7 +88,7 @@
         'comp-resources $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-resources ()
             div
-              {} $ :style $ {} (:max-width 800) (:margin :auto) (:padding 16)
+              {} $ :style $ {} (:max-width |800px) (:margin |auto) (:padding |16px)
               comp-md-block (inline |resource.md)
                 {} $ :class-name |content
           :examples $ []
@@ -93,19 +97,19 @@
         'comp-tool-card $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-tool-card (info)
             div
-              {} $ :style $ merge ui/row-parted
+              {} $ :style $ .merge ui/row-parted
                 {}
                   :border $ str "|1px solid " $ hsl 0 0 90
                   :padding "|8px 16px"
                   :border-radius |8px
-                  :margin-top 16
+                  :margin-top |16px
               div ({})
                 div ({})
                   a
                     {}
                       :href $ :url info
                       :target |_blank
-                      :style $ {} (:text-decoration :none) (:font-size 16)
+                      :style $ {} (:text-decoration |none) (:font-size |16px)
                         :color $ hsl 240 90 70
                         :line-height |1.4em
                         :font-family ui/font-fancy
@@ -117,10 +121,10 @@
                   div $ {} $ :style
                     {}
                       :background-image $ str "|url(" logo "|)"
-                      :background-size :cover
-                      :background-position :center
-                      :width 40
-                      :height 40
+                      :background-size |cover
+                      :background-position |center
+                      :width |40px
+                      :height |40px
                 (:none) nil
           :examples $ []
           :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
@@ -128,24 +132,23 @@
         'comp-tools $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-tools ()
             div
-              {} $ :style $ {} (:max-width 800) (:margin :auto) (:padding 16)
+              {} $ :style $ {} (:max-width |800px) (:margin |auto) (:padding |16px)
               comp-md-block (inline |quote.md)
                 {} $ :class-name |content
               div
-                {} $ :style $ {} (:margin-top 48)
-                <> |Learning $ {} (:font-size 24) (:font-weight 100) (:font-family ui/font-normal) (:vertical-align :middle)
+                {} $ :style $ {} (:margin-top |48px)
+                <> |Learning $ {} (:font-size |24px) (:font-weight |100) (:font-family ui/font-normal) (:vertical-align |middle)
                 =< 16 nil
                 a
                   {}
-                    :style $ merge ui/button $ {} (:vertical-align :middle) (:border-radius |16px) (:padding "|0 16px") (:font-family ui/font-fancy) (:font-size 20) (:text-decoration :none) (:line-height |32px) (:display :inline-block)
+                    :style $ .merge ui/button $ {} (:vertical-align |middle) (:border-radius |16px) (:padding "|0 16px") (:font-family ui/font-fancy) (:font-size |20px) (:text-decoration |none) (:line-height |32px) (:display |inline-block)
                     :href |http://clojurescript.io/
                     :target |_blank
                   <> "|Get an online REPL"
               comp-md-block (inline |learning.md)
                 {} $ :class-name |content
               div
-                {} $ :style $ merge
-                  {} $ :width :auto
+                {} $ :style $ {} (:width |auto)
                 comp-tool-card $ ToolInfo :name |shadow-cljs :logo (Option :some |http://cdn.tiye.me/logo/shadow-cljs.png) :url |http://shadow-cljs.org :description "|ClojureScript compilation made easy."
                 comp-tool-card $ ToolInfo :name |figwheel-main :logo (Option :none) :url |https://figwheel.org :description "|Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"
           :examples $ []
@@ -176,23 +179,23 @@
                   (:none) (raise "|Unknown showcase index")
               div
                 {} (:class-name |showcase)
-                  :style $ merge ui/center $ {} (:padding |16px) (:min-height 320) (:overflow :auto) (:padding 16)
+                  :style $ .merge ui/center $ {} (:padding |16px) (:min-height |320px) (:overflow |auto) (:padding |16px)
                 div ({})
                   <> (:text showcase)
-                    {} (:color :white) (:font-size 16)
+                    {} (:color |white) (:font-size |16px)
                   =< 16 nil
                   a $ {}
                     :href $ :url showcase
                     :target |_blank
                     :style $ {}
                       :color $ hsl 240 80 80
-                      :text-decoration :none
+                      :text-decoration |none
                       :font-family ui/font-fancy
                     :inner-text |Link
                 comp-md-block
                   str "|```clojure" &newline (:code showcase) &newline "|```"
                   {}
-                    :style $ {} (:background-color :transparent) (:font-family ui/font-code) (:color :white) (:padding 8) (:margin :auto)
+                    :style $ {} (:background-color |transparent) (:font-family ui/font-code) (:color |white) (:padding |8px) (:margin |auto)
                     :highlight highlighter
           :examples $ []
           :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
@@ -267,16 +270,24 @@
           :code $ quote $ defn main! ()
             println "|Running mode:" $ if config/dev? |dev |release
             if config/dev? $ load-console-formatter!
-            register-language! |clojure clojure-lang
+            let
+                language clojure-lang
+              if (fn? language) (register-language! |clojure language) (raise "|Expected Highlight.js LanguageFn")
             match
               browser/storage-get $ :storage-key config/site
               (:some raw)
                 dispatch! $ :: :hydrate-storage $ parse-cirru-edn raw
               (:none) &unit
             render-app!
-            add-watch! *reel :changes $ fn (r p) (render-app!)
+            add-watch! *reel :changes $ fn (r p)
+              hint-fn $ {} (:return 'Unit)
+                :args $ [] (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store) (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store)
+              render-app!
             listen-devtools! |a dispatch!
-            browser/add-event-listener! |beforeunload $ fn (event) (save-store!)
+            browser/add-event-listener! |beforeunload $ fn (event)
+              hint-fn $ {} (:return 'Unit)
+                :args $ [] 'js-ffi.browser/EventHost
+              save-store!
             dispatch! $ :: :pick-case $ rand-int 10
             println "|App started."
           :examples $ []
@@ -297,7 +308,10 @@
           :code $ quote $ defn reload! ()
             if (js-nullish? build-errors)
               do (remove-watch! *reel :changes) (clear-cache!)
-                add-watch! *reel :changes $ fn (reel prev) (render-app!)
+                add-watch! *reel :changes $ fn (reel prev)
+                  hint-fn $ {} (:return 'Unit)
+                    :args $ [] (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store) (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store)
+                  render-app!
                 reset! *reel $ typed-reel/refresh updater @*reel schema/store
                 hud! |ok~ |Ok
               hud! |error build-errors
@@ -310,6 +324,9 @@
           :code $ quote $ defn render-app! ()
             render! (mount-target) (comp-container @*reel) dispatch!
           :examples $ []
+          :schema $ :: 'Fn $ {} (:return 'Unit)
+            :args $ []
+            :features $ #{} :js-ffi
         'save-store! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn save-store! ()
             let
@@ -442,7 +459,7 @@
               :args $ [] 'app.util/HighlightHost 'String 'JsObject
               :return 'JsObject
             .register-language! $ :: 'Fn $ {}
-              :args $ [] 'app.util/HighlightHost 'String 'JsObject
+              :args $ [] 'app.util/HighlightHost 'String 'Fn
               :return 'Unit
           :examples $ []
           :ffi $ {} (:backend :js) (:kind :external-object)
@@ -484,7 +501,7 @@
             , &unit
           :examples $ []
           :schema $ :: 'Fn $ {} (:return 'Unit)
-            :args $ [] 'String 'JsObject
+            :args $ [] 'String 'Fn
             :features $ #{} :js-ffi
         'supported-langs $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def supported-langs (&{} |clojure |clojure)
