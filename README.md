@@ -39,6 +39,8 @@ when restored. Startup still chooses a random showcase, as before.
 
 本轮迁移旧 Map merge（单参数恒等包装直接去掉）和等价静态 CSS 写法；
 事件、watcher、EventHost 及原无声明的 render-app! 按真实生产者补全合同。
+`register-language!` 的语言定义参数修正为实际 Fn，而非 JsObject；自定义调用者需传
+Highlight.js LanguageFn 函数，不传普通对象。该函数边界仍开放，不伪造已完全闭合的回调类型。
 随机选择、展示示例、原 HUD、存档恢复及全部原测试保持，不增加强转、预算或验证脚本。
 
 CI checks all admitted definitions and all application public definitions through all-defs, plus the full strict workflow,
