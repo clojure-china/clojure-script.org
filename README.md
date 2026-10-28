@@ -8,11 +8,12 @@ ClojureScript, beginners' home page
 
 ### Workflow
 
-使用者影响：应用使用精确配套正式 Calcit / `@calcit/procs` **0.30.1**，以及
-Respo 0.16.126、Reel 0.6.42、Markdown 0.4.60、UI 0.8.1、js-ffi 0.2.6
-（传递 Router 0.8.38），Node.js 24 / Yarn 4.18.0、Vite 8.3.3。升级后完整刷新，UI 0.8
+使用者影响：应用使用精确配套正式 Calcit / `@calcit/procs` **0.31.0**，以及
+Respo 0.17.0-alpha.4、Reel 0.7.0-alpha.4、Markdown 0.5.0-alpha.4、UI 0.9.0-alpha.4、js-ffi 0.2.7
+（传递 Router 0.9.0-alpha.3），Node.js 24 / Yarn 4.18.0、Vite 8.3.3。模块图仍含已发布 alpha；重新安装完整依赖并刷新，UI 0.9
 基础样式可能改变外观。`content/*.cljs` 是展示用 ClojureScript 示例，不是待迁移的 Calcit 应用源码。
 
+本次补齐 Respo 的 DispatchOp 入口绑定，保留原 Dynamic→Enum 检查与业务/Reel 解码。
 原导航、展示内容、高亮、Map 存档字段与启动时随机展示选择保持不变。
 启动先读取并解码原存档，再渲染及注册保存监听；解析或解码失败时停止启动，不先注册
 可能覆盖原值的 `beforeunload`。不吞异常、不添加默认存档，也不把正常刷新验收称为
