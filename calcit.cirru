@@ -33,8 +33,7 @@
                 comp-footer
                 when dev? $ comp-reel (>> states :reel) (reel-view/view-data reel) ({})
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
-            :args $ [] $ :: 'reel.typed/State 'app.schema/Action 'app.schema/Store
+          :schema $ quote $ Fn (reel.typed/State app.schema/Action app.schema/Store) (-> respo.schema/Component)
         'comp-footer $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-footer ()
             div
@@ -50,8 +49,7 @@
                     :target |_blank
                   <> "|Site built with Calcit & Respo."
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
-            :args $ []
+          :schema $ quote $ Fn (-> respo.schema/Component)
         'comp-header $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-header ()
             div
@@ -63,10 +61,9 @@
                   {}
                     :style $ .merge ui/row-center $ {} (:cursor |pointer)
                     :on-click $ fn (e d!)
-                      hint-fn $ {} (:return 'Unit)
-                        :args $ [] (:: 'Map 'Tag 'Dynamic)
-                          :: 'Fn $ {} (:rest 'Dynamic) (:return 'Unit)
-                            :args $ [] 'Dynamic
+                      hint-fn $ Fn (Map Tag Dynamic)
+                        Fn Dynamic & Dynamic $ -> Unit
+                        -> Unit
                       d! $ :: :pick-case $ rand-int 10
                   div $ {} $ :style
                     {}
@@ -83,8 +80,7 @@
                       :text-decoration |none
                 div $ {}
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
-            :args $ []
+          :schema $ quote $ Fn (-> respo.schema/Component)
         'comp-resources $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-resources ()
             div
@@ -92,8 +88,7 @@
               comp-md-block (inline |resource.md)
                 {} $ :class-name |content
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
-            :args $ []
+          :schema $ quote $ Fn (-> respo.schema/Component)
         'comp-tool-card $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-tool-card (info)
             div
@@ -127,8 +122,7 @@
                       :height |40px
                 (:none) nil
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
-            :args $ [] 'app.schema/ToolInfo
+          :schema $ quote $ Fn app.schema/ToolInfo (-> respo.schema/Component)
         'comp-tools $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-tools ()
             div
@@ -152,8 +146,7 @@
                 comp-tool-card $ ToolInfo :name |shadow-cljs :logo (Option :some |http://cdn.tiye.me/logo/shadow-cljs.png) :url |http://shadow-cljs.org :description "|ClojureScript compilation made easy."
                 comp-tool-card $ ToolInfo :name |figwheel-main :logo (Option :none) :url |https://figwheel.org :description "|Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
-            :args $ []
+          :schema $ quote $ Fn (-> respo.schema/Component)
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.comp.container
           :require
@@ -198,8 +191,7 @@
                     :style $ {} (:background-color |transparent) (:font-family ui/font-code) (:color |white) (:padding |8px) (:margin |auto)
                     :highlight highlighter
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'respo.schema/Component)
-            :args $ [] 'Number
+          :schema $ quote $ Fn Number (-> respo.schema/Component)
         'showcases $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def showcases
             {}
@@ -214,7 +206,7 @@
               8 $ Showcase :code (inline |atom.cljs) :text |Atom :url |https://clojuredocs.org/clojure.core/atom
               9 $ Showcase :code (inline |edn.cljs) :text |EDN :url |https://learnxinyminutes.com/docs/edn/
           :examples $ []
-          :schema $ :: 'Map 'Number 'app.schema/Showcase
+          :schema $ quote $ Map Number app.schema/Showcase
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.comp.showcase
           :require
@@ -231,17 +223,17 @@
         'Site $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defstruct Site (:dev-ui 'String) (:release-ui 'String) (:cdn-url 'String) (:title 'String) (:icon 'String) (:storage-key 'String)
           :examples $ []
-          :schema $ :: 'StructDef
+          :schema $ quote StructDef
         'dev? $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def dev?
             = |dev $ .unwrap-or (get-env |mode) |release
           :examples $ []
-          :schema $ :: 'Bool
+          :schema $ quote Bool
         'site $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def site
             Site :dev-ui |http://localhost:8100/main.css :release-ui |http://cdn.tiye.me/favored-fonts/main.css :cdn-url |http://cdn.tiye.me/clojure-script-org/ :title "|ClojureScript, beginners' home page" :icon |http://cdn.tiye.me/logo/cljs.png :storage-key |clojure-script.org
           :examples $ []
-          :schema $ :: 'app.config/Site
+          :schema $ quote app.config/Site
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.config
     'app.main $ %{} 'FileEntry
@@ -249,7 +241,7 @@
         '*reel $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defref *reel (typed-reel/new-reel schema/store)
           :examples $ []
-          :schema $ :: 'Ref $ :: 'reel.typed/State 'app.schema/Action 'app.schema/Store
+          :schema $ quote $ Ref (reel.typed/State app.schema/Action app.schema/Store)
         'dispatch! $ %{} 'CodeEntry
           :doc "|One checked Respo event boundary: legacy anonymous enums normalize to typed Reel controls or nominal application Actions. Dynamic remains only because Respo render! owns an open dispatcher contract; business updater/store are concrete."
           :code $ quote $ defn dispatch! (input)
@@ -264,8 +256,7 @@
               raise "|Expected one action enum"
             , &unit
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'Unit)
-            :args $ [] 'Dynamic
+          :schema $ quote $ Fn Dynamic (-> Unit)
         'main! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn main! ()
             println "|Running mode:" $ if config/dev? |dev |release
@@ -280,53 +271,43 @@
               (:none) &unit
             render-app!
             add-watch! *reel :changes $ fn (r p)
-              hint-fn $ {} (:return 'Unit)
-                :args $ [] (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store) (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store)
+              hint-fn $ Fn (reel.typed/State app.schema/Action app.schema/Store) (reel.typed/State app.schema/Action app.schema/Store) (-> Unit)
               render-app!
             listen-devtools! |a dispatch!
             browser/add-event-listener! |beforeunload $ fn (event)
-              hint-fn $ {} (:return 'Unit)
-                :args $ [] 'js-ffi.browser/EventHost
+              hint-fn $ Fn js-ffi.browser/EventHost $ -> Unit
               save-store!
             dispatch! $ :: :pick-case $ rand-int 10
             println "|App started."
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'Unit)
-            :args $ []
-            :features $ #{} :js-ffi
+          :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
         'mount-target $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn mount-target ()
             let
                 document-host $ js-cast js/document 'respo.dom/DomDocument
               document-host .query-selector |.app
           :examples $ []
-          :schema $ :: 'Fn $ {}
-            :args $ []
-            :features $ #{} :js-ffi
-            :return $ :: 'JsNullish 'respo.dom/DomElement
+          :schema $ quote $ Fn
+            -> $ JsNullish respo.dom/DomElement
+            :features :js-ffi
         'reload! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn reload! ()
             if (js-nullish? build-errors)
               do (remove-watch! *reel :changes) (clear-cache!)
                 add-watch! *reel :changes $ fn (reel prev)
-                  hint-fn $ {} (:return 'Unit)
-                    :args $ [] (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store) (:: 'reel.typed/State 'app.schema/Action 'app.schema/Store)
+                  hint-fn $ Fn (reel.typed/State app.schema/Action app.schema/Store) (reel.typed/State app.schema/Action app.schema/Store) (-> Unit)
                   render-app!
                 reset! *reel $ typed-reel/refresh updater @*reel schema/store
                 hud! |ok~ |Ok
               hud! |error build-errors
             , &unit
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'Unit)
-            :args $ []
-            :features $ #{} :js-ffi
+          :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
         'render-app! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn render-app! ()
             render! (mount-target) (comp-container @*reel) dispatch!
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'Unit)
-            :args $ []
-            :features $ #{} :js-ffi
+          :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
         'save-store! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn save-store! ()
             let
@@ -337,8 +318,7 @@
                   :content $ :content store
                   :case-idx $ :case-idx store
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'Unit)
-            :args $ []
+          :schema $ quote $ Fn (-> Unit)
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.main
           :require
@@ -360,38 +340,40 @@
       :defs $ {}
         'Action $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defenum Action
-            :states (:: 'List 'Dynamic) 'Dynamic
+            :states
+              quote $ List Dynamic
+              , 'Dynamic
             :content 'String
             :pick-case 'Number
             :hydrate-storage 'app.schema/Store
           :examples $ []
-          :schema $ :: 'EnumDef
+          :schema $ quote EnumDef
         'DispatchOp $ %{} 'CodeEntry (:doc "|Respo 入口事件合同，容纳应用和 Reel 控制事件；代表值不发送。")
           :code $ quote $ def DispatchOp (:: :unhandled)
           :examples $ []
-          :schema $ :: 'Enum
+          :schema $ quote Enum
         'Showcase $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defstruct Showcase (:code 'String) (:text 'String) (:url 'String)
           :examples $ []
-          :schema $ :: 'StructDef
+          :schema $ quote StructDef
         'Store $ %{} 'CodeEntry
           :doc "|Application fields are concrete. Only the Respo component-state tree retains its existing heterogeneous payload contract; hydrate and updates must pass a runtime decoder."
           :code $ quote $ defstruct Store
-            :states $ :: 'Map 'Tag 'Dynamic
+            :states $ quote $ Map Tag Dynamic
             :content 'String
             :case-idx 'Number
           :examples $ []
-          :schema $ :: 'StructDef
+          :schema $ quote StructDef
         'ToolInfo $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defstruct ToolInfo (:name 'String) (:url 'String) (:description 'String)
-            :logo $ :: 'Option 'String
+            :logo $ quote $ Option String
           :examples $ []
-          :schema $ :: 'StructDef
+          :schema $ quote StructDef
         'store $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def store
             Store :states ({}) :content | :case-idx 0
           :examples $ []
-          :schema $ :: 'app.schema/Store
+          :schema $ quote app.schema/Store
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.schema
     'app.updater $ %{} 'FileEntry
@@ -411,8 +393,7 @@
                 Action :hydrate-storage $ decode-map-as data 'app.schema/Store
               _ $ raise "|Unknown application action"
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'app.schema/Action)
-            :args $ [] 'Enum
+          :schema $ quote $ Fn Enum (-> app.schema/Action)
           :tests $ [] $ %{} 'TestEntry (:name |restores-legacy-store-map)
             :code $ quote $ let
                 action $ decode-action $ :: :hydrate-storage
@@ -438,8 +419,7 @@
               (:pick-case c) (assoc store :case-idx c)
               (:hydrate-storage d) d
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'app.schema/Store)
-            :args $ [] 'app.schema/Store 'app.schema/Action 'String 'Number
+          :schema $ quote $ Fn app.schema/Store app.schema/Action String Number (-> app.schema/Store)
           :tests $ [] $ %{} 'TestEntry (:name |updates-concrete-store)
             :code $ quote $ let
                 original $ Store :states ({}) :content | :case-idx 0
@@ -459,20 +439,16 @@
       :defs $ {}
         'HighlightHost $ %{} 'CodeEntry (:doc |)
           :code $ quote $ deftrait HighlightHost
-            .highlight $ :: 'Fn $ {}
-              :args $ [] 'app.util/HighlightHost 'String 'JsObject
-              :return 'JsObject
-            .register-language! $ :: 'Fn $ {}
-              :args $ [] 'app.util/HighlightHost 'String 'Fn
-              :return 'Unit
+            .highlight $ quote $ Fn app.util/HighlightHost String JsObject (-> JsObject)
+            .register-language! $ quote $ Fn app.util/HighlightHost String Fn (-> Unit)
           :examples $ []
           :ffi $ {} (:backend :js) (:kind :external-object)
-          :schema $ :: 'Trait
+          :schema $ quote Trait
         'HighlightResult $ %{} 'CodeEntry (:doc |)
           :code $ quote $ deftrait HighlightResult (:value 'String)
           :examples $ []
           :ffi $ {} (:backend :js) (:kind :external-object)
-          :schema $ :: 'Trait
+          :schema $ quote Trait
         'highlighter $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn highlighter (code lang)
             let
@@ -486,17 +462,14 @@
                   escape-html code
               if (string? html) html $ raise "|Markdown highlighter expected HTML String"
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'String)
-            :args $ [] 'String 'String
-            :features $ #{} :js-ffi
+          :schema $ quote $ Fn String String (-> String) (:features :js-ffi)
         'inline $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defmacro inline (path)
             read-file $ str |content/ path
           :examples $ []
-          :schema $ :: 'Macro $ {}
-            :capabilities $ #{} :fs-read
-            :expansion $ :: 'Expr 'String
-            :required $ [] 'Syntax
+          :schema $ quote $ Macro Syntax
+            -> $ Expr String
+            :capabilities :fs-read
         'register-language! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn register-language! (name language)
             let
@@ -504,13 +477,11 @@
               registry .register-language! name language
             , &unit
           :examples $ []
-          :schema $ :: 'Fn $ {} (:return 'Unit)
-            :args $ [] 'String 'Fn
-            :features $ #{} :js-ffi
+          :schema $ quote $ Fn String Fn (-> Unit) (:features :js-ffi)
         'supported-langs $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def supported-langs (&{} |clojure |clojure)
           :examples $ []
-          :schema $ :: 'Map 'String 'String
+          :schema $ quote $ Map String String
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.util
           :require (|escape-html :default escape-html) (|highlight.js :default hljs)

@@ -6,6 +6,22 @@ ClojureScript, beginners' home page
 
 > No offending. I'm just trying to explore if such a page is meaningful for beginners.
 
+### Calcit 0.32.0 迁移候选：使用者影响
+
+CLI/procs 配对正式 0.32.0，需重新安装完整图、生成 JS 并刷新。UI 模块暂为本地候选，
+正式标签整图待验收。导航、展示内容、高亮、启动随机选择和存档恢复顺序保持；
+`content/*.cljs` 仍是展示示例，不作为 Calcit 源码改写。
+
+官方转换九处类型写法，32 个定义 schema 不变；原严格门禁、两项业务测试、
+零弃用调用/动态方法检查保留，不增加强转或预算。Actions 使用已核对原 SHA 的
+精确正式 tag；依赖隔离统一为一小时，COS 内置 verify 和部署路径不变。
+本地完整 strict（diagnostics 为空）、全部 307 个定义、原两项测试、零动态方法/
+弃用调用、构建及 immutable 安装通过。实际 Logo 展示切换（InterOp→EDN）、
+高亮与刷新通过，浏览器 warn/error 为空；独立只读评审无待处理问题。
+保留原大 bundle 提示，不调整阈值；未点击复制、访问外部工具或操作真实存档。
+坏存档、HMR、移动端未在本轮重验，正式依赖整图和 PR/Linux CI 尚待验证。
+下方 0.31 说明为历史记录。
+
 ### Workflow
 
 使用者影响：应用使用精确配套正式 Calcit / `@calcit/procs` **0.31.0**，以及
