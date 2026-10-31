@@ -6,21 +6,15 @@ ClojureScript, beginners' home page
 
 > No offending. I'm just trying to explore if such a page is meaningful for beginners.
 
-### Calcit 0.32.0 迁移候选：使用者影响
+### Calcit 0.32.1：使用者影响
 
-CLI/procs 配对正式 0.32.0，需重新安装完整图、生成 JS 并刷新。UI 模块暂为本地候选，
-正式标签整图待验收。导航、展示内容、高亮、启动随机选择和存档恢复顺序保持；
-`content/*.cljs` 仍是展示示例，不作为 Calcit 源码改写。
+CLI 与 `@calcit/procs` 配对正式 **0.32.1**，需重新安装完整图、生成 JS 并完整刷新。严格安装已发布 Respo **0.17.1**、Reel **0.7.0**、Markdown **0.5.0**、UI **0.9.0**、JS FFI **0.2.9**；UI 固定的传递 Router 仍为精确 **0.9.0-alpha.4**，不混入本地候选或 hash。导航、展示内容、高亮、启动随机选择、存档恢复顺序及 JS HUD 保持；`content/*.cljs` 仍是展示示例，不作为 Calcit 源码改写。
 
-官方转换九处类型写法，32 个定义 schema 不变；原严格门禁、两项业务测试、
-零弃用调用/动态方法检查保留，不增加强转或预算。Actions 使用已核对原 SHA 的
-精确正式 tag；依赖隔离统一为一小时，COS 内置 verify 和部署路径不变。
-本地完整 strict（diagnostics 为空）、全部 307 个定义、原两项测试、零动态方法/
-弃用调用、构建及 immutable 安装通过。实际 Logo 展示切换（InterOp→EDN）、
-高亮与刷新通过，浏览器 warn/error 为空；独立只读评审无待处理问题。
-保留原大 bundle 提示，不调整阈值；未点击复制、访问外部工具或操作真实存档。
-坏存档、HMR、移动端未在本轮重验，正式依赖整图和 PR/Linux CI 尚待验证。
-下方 0.31 说明为历史记录。
+官方 format 规范化九处旧类型写法；32 个应用定义的代码/schema/metadata/原测试与 main 经官方 format 归一后的完整查询视图相同。原完整 strict、all-defs、两项业务测试和零弃用调用/动态方法门禁保留，不增加强转、预算、校验脚本或测试框架。Actions 使用已核对原 SHA 的精确正式 tag；包等待期按维护者明确的一小时策略显式为 60m，COS 内置 verify 和原部署路径不变。
+
+精确官方 0.32.1、真实已发布六模块 Caps 图、307/307 定义、完整 strict（diagnostics=[]）、原两项测试、零动态方法/弃用调用、canonical dry-run、immutable、工具链配对与构建通过。实际隔离 IAB 中 Logo 将展示从 Thread macros 切到 Data manipulation、再到 EDN，语法高亮和刷新正常，warning/error 为空。保留原大 bundle 提示，不调整阈值；未点击复制、访问外部工具或操作真实存档，未重验坏存档、HMR 和移动端。精确 PR CI 结果在迁移 PR 更新，不将本地验收当作生产部署成功。
+
+历史 Git Snapshot 的旧类型暂不能由 program-diff 加载（[Calcit #2503](https://github.com/calcit-lang/calcit/issues/2503)）；本轮对历史 blob 隔离副本仅经官方 format，再查询全部定义对照，不绕过原门禁。下方 0.31 说明为历史记录。
 
 ### Workflow
 
@@ -67,7 +61,7 @@ runs the two attached updater/hydration tests, and builds the frontend.
 旧 alpha.5 曾完成真实浏览器渲染、高亮、展示切换与刷新验收；这不替代本轮正式图的
 CI 和实际浏览器证据。保留已有两项 updater/hydration 测试，不新增验证脚本或预算。
 
-Yarn 使用默认 Git 审批与包等待期，不保留 procs 预批准、不通配批准任意 Git 仓库或关闭包等待期。
+Yarn 保留默认 Git 审批；包等待期按维护者确认的一小时策略显式为 60m，不保留 procs 预批准、不通配批准任意 Git 仓库或关闭包等待期。
 
 Main/master deployment uploads frontend resources through
 `worktools/cos-upload-action` with built-in public checksum verification. The
