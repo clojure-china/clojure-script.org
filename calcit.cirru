@@ -26,12 +26,14 @@
                     comp-md-block (inline |clojure-is.md)
                       {} $ :class-name "|content on-dark"
                   comp-showcase $ :case-idx store
-                =< nil 32
+                respo.comp.space/space-y 32
                 comp-tools
                 comp-resources
-                =< nil 16
+                respo.comp.space/space-y 16
                 comp-footer
-                when dev? $ comp-reel (>> states :reel) (reel-view/view-data reel) ({})
+                if dev?
+                  Option :some $ comp-typed-reel (>> states :reel) reel $ {}
+                  Option :none
           :examples $ []
           :schema $ quote $ Fn (reel.typed/State app.schema/Action app.schema/Store) (-> respo.schema/Component)
         'comp-footer $ %{} 'CodeEntry (:doc |)
@@ -61,10 +63,10 @@
                   {}
                     :style $ .merge ui/row-center $ {} (:cursor |pointer)
                     :on-click $ fn (e d!)
-                      hint-fn $ Fn (Map Tag Dynamic)
-                        Fn Dynamic & Dynamic $ -> Unit
+                      hint-fn $ Fn respo.schema/RespoEvent
+                        Fn AnyEnum $ -> Unit
                         -> Unit
-                      d! $ :: :pick-case $ rand-int 10
+                      d! $ app.schema/Action :pick-case $ decode-map-as (rand-int 10) Number
                   div $ {} $ :style
                     {}
                       :background-image $ str "|url(https://cdn.tiye.me/logo/cljs.png)"
@@ -72,7 +74,7 @@
                       :height |40px
                       :background-position "|center center"
                       :background-size |cover
-                  =< 8 nil
+                  respo.comp.space/space-x 8
                   a $ {} (:href |https://clojurescript.org/) (:inner-text "|(Unofficial)")
                     :style $ {}
                       :color $ hsl 240 80 80
@@ -132,7 +134,7 @@
               div
                 {} $ :style $ {} (:margin-top |48px)
                 <> |Learning $ {} (:font-size |24px) (:font-weight |100) (:font-family ui/font-normal) (:vertical-align |middle)
-                =< 16 nil
+                respo.comp.space/space-x 16
                 a
                   {}
                     :style $ .merge ui/button $ {} (:vertical-align |middle) (:border-radius |16px) (:padding "|0 16px") (:font-family ui/font-fancy) (:font-size |20px) (:text-decoration |none) (:line-height |32px) (:display |inline-block)
@@ -153,15 +155,13 @@
             respo-ui.core :refer $ hsl
             respo-ui.core :as ui
             respo.core :refer $ defcomp >> <> div button textarea span a
-            respo.comp.space :refer $ =<
-            reel.comp.reel :refer $ comp-reel
+            reel.comp.reel :refer $ comp-typed-reel
             respo-md.comp.md :refer $ comp-md comp-md-block
             app.config :refer $ dev?
             app.util :refer $ highlighter inline
             app.comp.showcase :refer $ comp-showcase
             |@calcit/std :refer $ rand-int
             app.schema :refer $ ToolInfo
-            reel.typed-compat :as reel-view
     'app.comp.showcase $ %{} 'FileEntry
       :defs $ {}
         'comp-showcase $ %{} 'CodeEntry (:doc |)
@@ -176,7 +176,7 @@
                 div ({})
                   <> (:text showcase)
                     {} (:color |white) (:font-size |16px)
-                  =< 16 nil
+                  respo.comp.space/space-x 16
                   a $ {}
                     :href $ :url showcase
                     :target |_blank
@@ -213,7 +213,6 @@
             respo-ui.core :refer $ hsl
             respo-ui.core :as ui
             respo.core :refer $ defcomp cursor-> action-> mutation-> <> div button textarea span a
-            respo.comp.space :refer $ =<
             respo-md.comp.md :refer $ comp-md comp-md-block
             app.config :refer $ dev?
             app.util :refer $ highlighter inline
@@ -221,7 +220,7 @@
     'app.config $ %{} 'FileEntry
       :defs $ {}
         'Site $ %{} 'CodeEntry (:doc |)
-          :code $ quote $ defstruct Site (:dev-ui 'String) (:release-ui 'String) (:cdn-url 'String) (:title 'String) (:icon 'String) (:storage-key 'String)
+          :code $ quote $ defstruct Site (:dev-ui String) (:release-ui String) (:cdn-url String) (:title String) (:icon String) (:storage-key String)
           :examples $ []
           :schema $ quote StructDef
         'dev? $ %{} 'CodeEntry (:doc |)
@@ -243,20 +242,16 @@
           :examples $ []
           :schema $ quote $ Ref (reel.typed/State app.schema/Action app.schema/Store)
         'dispatch! $ %{} 'CodeEntry
-          :doc "|One checked Respo event boundary: legacy anonymous enums normalize to typed Reel controls or nominal application Actions. Dynamic remains only because Respo render! owns an open dispatcher contract; business updater/store are concrete."
-          :code $ quote $ defn dispatch! (input)
-            if (enum? input)
-              match (typed-reel/decode-control input)
-                (:some control)
-                  reset! *reel $ typed-reel/apply-control updater @*reel control
-                (:none)
-                  let
-                      action $ decode-action input
-                    reset! *reel $ typed-reel/record-op updater @*reel action (generate-id!) (host/now-ms)
-              raise "|Expected one action enum"
+          :doc "|Checks incoming application operations and Reel controls before updating typed state."
+          :code $ quote $ defn dispatch! (op)
+            match (typed-reel/decode-control op)
+              (:some control)
+                reset! *reel $ typed-reel/apply-control updater @*reel control
+              (:none)
+                reset! *reel $ typed-reel/record-op updater @*reel (decode-action op) (generate-id!) (host/now-ms)
             , &unit
           :examples $ []
-          :schema $ quote $ Fn Dynamic (-> Unit)
+          :schema $ quote $ Fn AnyEnum (-> Unit) (:features :js-ffi)
         'main! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn main! ()
             println "|Running mode:" $ if config/dev? |dev |release
@@ -305,7 +300,9 @@
           :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
         'render-app! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn render-app! ()
-            render! (mount-target) (comp-container @*reel) dispatch!
+            render-with! (mount-target)
+              fn () $ comp-container @*reel
+              , dispatch!
           :examples $ []
           :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
         'save-store! $ %{} 'CodeEntry (:doc |)
@@ -322,7 +319,7 @@
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.main
           :require
-            respo.core :refer $ render! clear-cache! realize-ssr!
+            respo.core :refer $ render-with! clear-cache! realize-ssr!
             app.comp.container :refer $ comp-container
             app.updater :refer $ updater decode-action
             app.schema :as schema
@@ -340,33 +337,31 @@
       :defs $ {}
         'Action $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defenum Action
-            :states
-              quote $ List Dynamic
-              , 'Dynamic
-            :content 'String
-            :pick-case 'Number
-            :hydrate-storage 'app.schema/Store
+            :states (List respo.schema/CoordKey) Dynamic
+            :content String
+            :pick-case Number
+            :hydrate-storage app.schema/Store
           :examples $ []
           :schema $ quote EnumDef
         'DispatchOp $ %{} 'CodeEntry (:doc "|Respo 入口事件合同，容纳应用和 Reel 控制事件；代表值不发送。")
           :code $ quote $ def DispatchOp (:: :unhandled)
           :examples $ []
-          :schema $ quote Enum
+          :schema $ quote AnyEnum
         'Showcase $ %{} 'CodeEntry (:doc |)
-          :code $ quote $ defstruct Showcase (:code 'String) (:text 'String) (:url 'String)
+          :code $ quote $ defstruct Showcase (:code String) (:text String) (:url String)
           :examples $ []
           :schema $ quote StructDef
         'Store $ %{} 'CodeEntry
           :doc "|Application fields are concrete. Only the Respo component-state tree retains its existing heterogeneous payload contract; hydrate and updates must pass a runtime decoder."
           :code $ quote $ defstruct Store
-            :states $ quote $ Map Tag Dynamic
-            :content 'String
-            :case-idx 'Number
+            :states $ Map Tag Dynamic
+            :content String
+            :case-idx Number
           :examples $ []
           :schema $ quote StructDef
         'ToolInfo $ %{} 'CodeEntry (:doc |)
-          :code $ quote $ defstruct ToolInfo (:name 'String) (:url 'String) (:description 'String)
-            :logo $ quote $ Option String
+          :code $ quote $ defstruct ToolInfo (:name String) (:url String) (:description String)
+            :logo $ Option String
           :examples $ []
           :schema $ quote StructDef
         'store $ %{} 'CodeEntry (:doc |)
@@ -383,7 +378,7 @@
             match op
               (:states cursor data)
                 Action :states
-                  decode-map-as cursor $ :: 'List 'Dynamic
+                  decode-map-as cursor $ List respo.schema/CoordKey
                   , data
               (:content text)
                 if (string? text) (Action :content text) (raise "|Expected content String")
@@ -393,7 +388,7 @@
                 Action :hydrate-storage $ decode-map-as data 'app.schema/Store
               _ $ raise "|Unknown application action"
           :examples $ []
-          :schema $ quote $ Fn Enum (-> app.schema/Action)
+          :schema $ quote $ Fn AnyEnum (-> app.schema/Action)
           :tests $ [] $ %{} 'TestEntry (:name |restores-legacy-store-map)
             :code $ quote $ let
                 action $ decode-action $ :: :hydrate-storage
@@ -414,7 +409,7 @@
               (:states cursor s)
                 assoc store :states $ decode-map-as
                   update-state-tree (:states store) cursor s
-                  :: 'Map 'Tag 'Dynamic
+                  Map Tag Dynamic
               (:content c) (assoc store :content c)
               (:pick-case c) (assoc store :case-idx c)
               (:hydrate-storage d) d
@@ -439,8 +434,8 @@
       :defs $ {}
         'HighlightHost $ %{} 'CodeEntry (:doc |)
           :code $ quote $ deftrait HighlightHost
-            .highlight $ quote $ Fn app.util/HighlightHost String JsObject (-> JsObject)
-            .register-language! $ quote $ Fn app.util/HighlightHost String Fn (-> Unit)
+            .highlight $ Fn app.util/HighlightHost String JsObject $ -> JsObject
+            .register-language! $ Fn app.util/HighlightHost String Fn $ -> Unit
           :examples $ []
           :ffi $ {} (:backend :js) (:kind :external-object)
           :schema $ quote Trait
