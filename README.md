@@ -6,15 +6,11 @@ ClojureScript, beginners' home page
 
 > No offending. I'm just trying to explore if such a page is meaningful for beginners.
 
-### Calcit 0.32.1：使用者影响
+### 使用者影响
 
-CLI 与 `@calcit/procs` 配对正式 **0.32.1**，需重新安装完整图、生成 JS 并完整刷新。严格安装已发布 Respo **0.17.1**、Reel **0.7.0**、Markdown **0.5.0**、UI **0.9.0**、JS FFI **0.2.9**；UI 固定的传递 Router 仍为精确 **0.9.0-alpha.4**，不混入本地候选或 hash。导航、展示内容、高亮、启动随机选择、存档恢复顺序及 JS HUD 保持；`content/*.cljs` 仍是展示示例，不作为 Calcit 源码改写。
+升级到 Calcit 和 `@calcit/procs` **0.35.1** 后，请重新安装依赖、生成 JS 并刷新页面。导航、十份展示示例、代码高亮、旧 Map 存档和页面 HUD 继续适用。`content/*.cljs` 仍作为页面示例展示。
 
-官方 format 规范化九处旧类型写法；32 个应用定义的代码/schema/metadata/原测试与 main 经官方 format 归一后的完整查询视图相同。原完整 strict、all-defs、两项业务测试和零弃用调用/动态方法门禁保留，不增加强转、预算、校验脚本或测试框架。Actions 使用已核对原 SHA 的精确正式 tag；包等待期按维护者明确的一小时策略显式为 60m，COS 内置 verify 和原部署路径不变。
-
-精确官方 0.32.1、真实已发布六模块 Caps 图、307/307 定义、完整 strict（diagnostics=[]）、原两项测试、零动态方法/弃用调用、canonical dry-run、immutable、工具链配对与构建通过。实际隔离 IAB 中 Logo 将展示从 Thread macros 切到 Data manipulation、再到 EDN，语法高亮和刷新正常，warning/error 为空。保留原大 bundle 提示，不调整阈值；未点击复制、访问外部工具或操作真实存档，未重验坏存档、HMR 和移动端。精确 PR CI 结果在迁移 PR 更新，不将本地验收当作生产部署成功。
-
-历史 Git Snapshot 的旧类型暂不能由 program-diff 加载（[Calcit #2503](https://github.com/calcit-lang/calcit/issues/2503)）；本轮对历史 blob 隔离副本仅经官方 format，再查询全部定义对照，不绕过原门禁。下方 0.31 说明为历史记录。
+Logo 切换使用 `RespoEvent` 和具名 `Action`，状态路径校验为 `CoordKey`。开发面板直接使用类型化 Reel，渲染进入 Respo 的 memo frame。依赖配对正式 Respo **0.19.4**、Reel **0.9.2**、Markdown **0.8.1**、UI **0.15.1**、JS-FFI **0.2.13**，传递 Router **0.12.1**。
 
 ### Workflow
 
