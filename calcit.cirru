@@ -6,7 +6,7 @@
     {} (:description |) (:init-fn 'app.main/main!) (:mode :js) (:reload-fn 'app.main/reload!) (:target :browser)
       :feature-policy $ {}
       :modules $ [] |respo.calcit/ |respo-ui.calcit/ |respo-markdown.calcit/ |reel.calcit/ |js-ffi/
-      :type-slots $ {} $ :dispatch-op |app.schema/DispatchOp
+      :type-slots $ {} $ :dispatch-op 'app.schema/DispatchOp
   :files $ {}
     'app.comp.container $ %{} 'FileEntry
       :defs $ {}
@@ -115,14 +115,14 @@
                   <> $ :description info
               match (:logo info)
                 (:some logo)
-                  div $ {} $ :style
-                    {}
+                  Option :some $ div $ {}
+                    :style $ {}
                       :background-image $ str "|url(" logo "|)"
                       :background-size |cover
                       :background-position |center
                       :width |40px
                       :height |40px
-                (:none) nil
+                (:none) (Option :none)
           :examples $ []
           :schema $ quote $ Fn app.schema/ToolInfo (-> respo.schema/Component)
         'comp-tools $ %{} 'CodeEntry (:doc |)
@@ -245,20 +245,32 @@
           :doc "|Checks incoming application operations and Reel controls before updating typed state."
           :code $ quote $ defn dispatch! (op)
             match (typed-reel/decode-control op)
-              (:some control)
-                reset! *reel $ typed-reel/apply-control updater @*reel control
+              (:some control) (dispatch-resolved! control)
               (:none)
-                reset! *reel $ typed-reel/record-op updater @*reel (decode-action op) (generate-id!) (host/now-ms)
+                dispatch-resolved! $ decode-action op
             , &unit
           :examples $ []
           :schema $ quote $ Fn AnyEnum (-> Unit) (:features :js-ffi)
+        'dispatch-resolved! $ %{} 'CodeEntry (:doc |)
+          :code $ quote $ defn dispatch-resolved! (op)
+            hint-fn $ Fn app.schema/ResolvedAction (-> Unit) (:features :js-ffi)
+            reset! *reel $ match op
+              (reel.typed/Control control) (typed-reel/apply-control updater @*reel control)
+              (app.schema/Action action)
+                typed-reel/record-op updater @*reel action (generate-id!) (host/now-ms)
+            , &unit
+          :examples $ []
         'main! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn main! ()
             println "|Running mode:" $ if config/dev? |dev |release
             if config/dev? $ load-console-formatter!
             let
                 language clojure-lang
-              if (fn? language) (register-language! |clojure language) (raise "|Expected Highlight.js LanguageFn")
+              if (fn? language)
+                register-language! |clojure $ fn (api)
+                  hint-fn $ Fn app.util/HighlightHost (-> app.util/LanguageDefinition) (:features :js-ffi)
+                  js-cast (language api) 'app.util/LanguageDefinition
+                raise "|Expected Highlight.js LanguageFn"
             match
               browser/storage-get $ :storage-key config/site
               (:some raw)
@@ -347,6 +359,10 @@
           :code $ quote $ def DispatchOp (:: :unhandled)
           :examples $ []
           :schema $ quote AnyEnum
+        'ResolvedAction $ %{} 'CodeEntry (:doc |)
+          :code $ quote $ defunion ResolvedAction Action reel.typed/Control
+          :examples $ []
+          :schema $ quote UnionDef
         'Showcase $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defstruct Showcase (:code String) (:text String) (:url String)
           :examples $ []
@@ -435,7 +451,9 @@
         'HighlightHost $ %{} 'CodeEntry (:doc |)
           :code $ quote $ deftrait HighlightHost
             .highlight $ Fn app.util/HighlightHost String JsObject $ -> JsObject
-            .register-language! $ Fn app.util/HighlightHost String Fn $ -> Unit
+            .register-language! $ Fn app.util/HighlightHost String
+              Fn app.util/HighlightHost $ -> app.util/LanguageDefinition
+              -> Unit
           :examples $ []
           :ffi $ {} (:backend :js) (:kind :external-object)
           :schema $ quote Trait
@@ -443,6 +461,11 @@
           :code $ quote $ deftrait HighlightResult (:value 'String)
           :examples $ []
           :ffi $ {} (:backend :js) (:kind :external-object)
+          :schema $ quote Trait
+        'LanguageDefinition $ %{} 'CodeEntry (:doc |)
+          :code $ quote $ deftrait LanguageDefinition (:name 'String)
+          :examples $ []
+          :ffi $ {} (:backend :js) (:kind :external-object) (:target :browser)
           :schema $ quote Trait
         'highlighter $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn highlighter (code lang)
@@ -472,7 +495,10 @@
               registry .register-language! name language
             , &unit
           :examples $ []
-          :schema $ quote $ Fn String Fn (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn String
+            Fn app.util/HighlightHost $ -> app.util/LanguageDefinition
+            -> Unit
+            :features :js-ffi
         'supported-langs $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def supported-langs (&{} |clojure |clojure)
           :examples $ []
