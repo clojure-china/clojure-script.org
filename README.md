@@ -8,9 +8,9 @@ ClojureScript, beginners' home page
 
 ### 使用者影响
 
-升级到 Calcit 和 `@calcit/procs` **0.37.0** 后，请重新安装依赖、生成 JS 并刷新页面。导航、十份展示示例、代码高亮、旧 Map 存档和页面 HUD 继续适用。`content/*.cljs` 仍作为页面示例展示。
+升级到 Calcit 和 `@calcit/procs` **0.38.0** 后，请重新安装依赖、生成 JS 并刷新页面。导航、十份展示示例、代码高亮、旧 Map 存档和页面 HUD 继续适用。`content/*.cljs` 仍作为页面示例展示。
 
-Logo 切换使用 `RespoEvent` 和具名 `Action`，状态路径校验为 `CoordKey`。开发面板直接使用类型化 Reel，渲染进入 Respo 的 memo frame。依赖配对正式 Respo **0.19.5**、Reel **0.10.0**、Markdown **0.8.2**、UI **0.15.2**、JS-FFI **0.2.13**，传递 Router **0.12.2**。 应用派发使用 `Action | reel.typed/Control`，缺席的工具 Logo 保持为 `Option`。Highlight.js 注册回调使用具名宿主类型。
+Logo 切换使用 `RespoEvent` 和具名 `Action`，状态路径校验为 `CoordKey`。开发面板直接使用类型化 Reel，渲染进入 Respo 的 memo frame。依赖配对正式 Respo **0.19.5**、Reel **0.11.0**、Markdown **0.8.2**、UI **0.15.2**、JS-FFI **0.2.13**，传递 Router **0.12.2**。 页面只派发具名 `Action`，Reel 面板和快捷键单独接收 `reel.typed/Control`，两者在更新状态时用联合类型匹配，缺席的工具 Logo 保持为 `Option`。Highlight.js 注册回调使用具名宿主类型。
 
 ### 0.31.0 迁移记录
 
@@ -39,8 +39,7 @@ For development, run `yarn watch` and `yarn serve` in separate terminals. Open
 the Vite URL with `?mode=dev` to enable the existing Reel tools.
 
 The application Store, actions, showcases and tool cards have explicit nominal
-types. The legacy Respo component-state payload and incoming dispatcher remain
-open boundaries, so this is not a claim of zero Dynamic type debt.
+types. The Respo component-state payload remains heterogeneous.
 Stored data retains the original Map field format and is decoded into Store
 when restored. Startup still chooses a random showcase, as before.
 

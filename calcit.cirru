@@ -6,12 +6,12 @@
     {} (:description |) (:init-fn 'app.main/main!) (:mode :js) (:reload-fn 'app.main/reload!) (:target :browser)
       :feature-policy $ {}
       :modules $ [] |respo.calcit/ |respo-ui.calcit/ |respo-markdown.calcit/ |reel.calcit/ |js-ffi/
-      :type-slots $ {} $ :dispatch-op 'app.schema/DispatchOp
+      :type-slots $ {} $ :dispatch-op 'app.schema/Action
   :files $ {}
     'app.comp.container $ %{} 'FileEntry
       :defs $ {}
         'comp-container $ %{} 'CodeEntry (:doc |)
-          :code $ quote $ defcomp comp-container (reel)
+          :code $ quote $ defcomp comp-container (reel on-control)
             let
                 store $ :store reel
                 states $ :states store
@@ -32,10 +32,12 @@
                 respo.comp.space/space-y 16
                 comp-footer
                 if dev?
-                  Option :some $ comp-typed-reel (>> states :reel) reel $ {}
+                  Option :some $ comp-typed-reel (>> states :reel) reel ({}) on-control
                   Option :none
           :examples $ []
-          :schema $ quote $ Fn (reel.typed/State app.schema/Action app.schema/Store) (-> respo.schema/Component)
+          :schema $ quote $ Fn (reel.typed/State app.schema/Action app.schema/Store)
+            Fn reel.typed/Control $ -> Unit
+            -> respo.schema/Component
         'comp-footer $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-footer ()
             div
@@ -64,7 +66,7 @@
                     :style $ .merge ui/row-center $ {} (:cursor |pointer)
                     :on-click $ fn (e d!)
                       hint-fn $ Fn respo.schema/RespoEvent
-                        Fn AnyEnum $ -> Unit
+                        Fn app.schema/Action $ -> Unit
                         -> Unit
                       d! $ app.schema/Action :pick-case $ decode-map-as (rand-int 10) Number
                   div $ {} $ :style
@@ -241,16 +243,10 @@
           :code $ quote $ defref *reel (typed-reel/new-reel schema/store)
           :examples $ []
           :schema $ quote $ Ref (reel.typed/State app.schema/Action app.schema/Store)
-        'dispatch! $ %{} 'CodeEntry
-          :doc "|Checks incoming application operations and Reel controls before updating typed state."
-          :code $ quote $ defn dispatch! (op)
-            match (typed-reel/decode-control op)
-              (:some control) (dispatch-resolved! control)
-              (:none)
-                dispatch-resolved! $ decode-action op
-            , &unit
+        'dispatch! $ %{} 'CodeEntry (:doc "|Dispatches a typed application action.")
+          :code $ quote $ defn dispatch! (op) (dispatch-resolved! op)
           :examples $ []
-          :schema $ quote $ Fn AnyEnum (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn app.schema/Action (-> Unit) (:features :js-ffi)
         'dispatch-resolved! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn dispatch-resolved! (op)
             hint-fn $ Fn app.schema/ResolvedAction (-> Unit) (:features :js-ffi)
@@ -274,17 +270,17 @@
             match
               browser/storage-get $ :storage-key config/site
               (:some raw)
-                dispatch! $ :: :hydrate-storage $ parse-cirru-edn raw
+                dispatch! $ restore-action raw
               (:none) &unit
             render-app!
             add-watch! *reel :changes $ fn (r p)
               hint-fn $ Fn (reel.typed/State app.schema/Action app.schema/Store) (reel.typed/State app.schema/Action app.schema/Store) (-> Unit)
               render-app!
-            listen-devtools! |a dispatch!
+            listen-devtools! |a on-control!
             browser/add-event-listener! |beforeunload $ fn (event)
               hint-fn $ Fn js-ffi.browser/EventHost $ -> Unit
               save-store!
-            dispatch! $ :: :pick-case $ rand-int 10
+            dispatch! $ schema/Action :pick-case $ decode-map-as (rand-int 10) Number
             println "|App started."
           :examples $ []
           :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
@@ -297,6 +293,10 @@
           :schema $ quote $ Fn
             -> $ JsNullish respo.dom/DomElement
             :features :js-ffi
+        'on-control! $ %{} 'CodeEntry (:doc |)
+          :code $ quote $ defn on-control! (control) (dispatch-resolved! control)
+          :examples $ []
+          :schema $ quote $ Fn reel.typed/Control (-> Unit) (:features :js-ffi)
         'reload! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn reload! ()
             if (js-nullish? build-errors)
@@ -313,7 +313,7 @@
         'render-app! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn render-app! ()
             render-with! (mount-target)
-              fn () $ comp-container @*reel
+              fn () $ comp-container @*reel on-control!
               , dispatch!
           :examples $ []
           :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
@@ -333,7 +333,7 @@
           :require
             respo.core :refer $ render-with! clear-cache! realize-ssr!
             app.comp.container :refer $ comp-container
-            app.updater :refer $ updater decode-action
+            app.updater :refer $ updater restore-action
             app.schema :as schema
             app.config :as config
             reel.util :refer $ listen-devtools!
@@ -355,10 +355,6 @@
             :hydrate-storage app.schema/Store
           :examples $ []
           :schema $ quote EnumDef
-        'DispatchOp $ %{} 'CodeEntry (:doc "|Respo 入口事件合同，容纳应用和 Reel 控制事件；代表值不发送。")
-          :code $ quote $ def DispatchOp (:: :unhandled)
-          :examples $ []
-          :schema $ quote AnyEnum
         'ResolvedAction $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defunion ResolvedAction Action reel.typed/Control
           :examples $ []
@@ -389,25 +385,14 @@
         :code $ quote $ ns app.schema
     'app.updater $ %{} 'FileEntry
       :defs $ {}
-        'decode-action $ %{} 'CodeEntry (:doc |)
-          :code $ quote $ defn decode-action (op)
-            match op
-              (:states cursor data)
-                Action :states
-                  decode-map-as cursor $ List respo.schema/CoordKey
-                  , data
-              (:content text)
-                if (string? text) (Action :content text) (raise "|Expected content String")
-              (:pick-case index)
-                if (number? index) (Action :pick-case index) (raise "|Expected showcase Number")
-              (:hydrate-storage data)
-                Action :hydrate-storage $ decode-map-as data 'app.schema/Store
-              _ $ raise "|Unknown application action"
+        'restore-action $ %{} 'CodeEntry (:doc |)
+          :code $ quote $ defn restore-action (raw)
+            Action :hydrate-storage $ decode-map-as (parse-cirru-edn raw) 'app.schema/Store
           :examples $ []
-          :schema $ quote $ Fn AnyEnum (-> app.schema/Action)
+          :schema $ quote $ Fn String (-> app.schema/Action)
           :tests $ [] $ %{} 'TestEntry (:name |restores-legacy-store-map)
             :code $ quote $ let
-                action $ decode-action $ :: :hydrate-storage
+                action $ restore-action $ format-cirru-edn
                   {}
                     :states $ {}
                     :content |saved
