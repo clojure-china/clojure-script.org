@@ -32,8 +32,8 @@
                 respo.comp.space/space-y 16
                 comp-footer
                 if dev?
-                  Option :some $ comp-typed-reel (>> states :reel) reel ({}) on-control
-                  Option :none
+                  Some $ comp-typed-reel (>> states :reel) reel ({}) on-control
+                  , None
           :examples $ []
           :schema $ quote $ Fn (reel.typed/State app.schema/Action app.schema/Store)
             Fn reel.typed/Control $ -> Unit
@@ -117,16 +117,16 @@
                   <> $ :description info
               match (:logo info)
                 (:some logo)
-                  Option :some $ div $ {}
+                  Some $ div $ {}
                     :style $ {}
                       :background-image $ str "|url(" logo "|)"
                       :background-size |cover
                       :background-position |center
                       :width |40px
                       :height |40px
-                (:none) (Option :none)
+                (:none) None
           :examples $ []
-          :schema $ quote $ Fn app.schema/ToolInfo (-> respo.schema/Component)
+          :schema $ quote $ Fn ToolInfo (-> respo.schema/Component)
         'comp-tools $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-tools ()
             div
@@ -147,8 +147,8 @@
                 {} $ :class-name |content
               div
                 {} $ :style $ {} (:width |auto)
-                comp-tool-card $ ToolInfo :name |shadow-cljs :logo (Option :some |http://cdn.tiye.me/logo/shadow-cljs.png) :url |http://shadow-cljs.org :description "|ClojureScript compilation made easy."
-                comp-tool-card $ ToolInfo :name |figwheel-main :logo (Option :none) :url |https://figwheel.org :description "|Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"
+                comp-tool-card $ ToolInfo :name |shadow-cljs :logo (Some |http://cdn.tiye.me/logo/shadow-cljs.png) :url |http://shadow-cljs.org :description "|ClojureScript compilation made easy."
+                comp-tool-card $ ToolInfo :name |figwheel-main :logo None :url |https://figwheel.org :description "|Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"
           :examples $ []
           :schema $ quote $ Fn (-> respo.schema/Component)
       :ns $ %{} 'NsEntry (:doc |)
@@ -208,7 +208,7 @@
               8 $ Showcase :code (inline |atom.cljs) :text |Atom :url |https://clojuredocs.org/clojure.core/atom
               9 $ Showcase :code (inline |edn.cljs) :text |EDN :url |https://learnxinyminutes.com/docs/edn/
           :examples $ []
-          :schema $ quote $ Map Number app.schema/Showcase
+          :schema $ quote $ Map Number Showcase
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.comp.showcase
           :require
@@ -234,7 +234,7 @@
           :code $ quote $ def site
             Site :dev-ui |http://localhost:8100/main.css :release-ui |http://cdn.tiye.me/favored-fonts/main.css :cdn-url |http://cdn.tiye.me/clojure-script-org/ :title "|ClojureScript, beginners' home page" :icon |http://cdn.tiye.me/logo/cljs.png :storage-key |clojure-script.org
           :examples $ []
-          :schema $ quote app.config/Site
+          :schema $ quote Site
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.config
     'app.main $ %{} 'FileEntry
@@ -242,20 +242,20 @@
         '*reel $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defref *reel (typed-reel/new-reel schema/store)
           :examples $ []
-          :schema $ quote $ Ref (reel.typed/State app.schema/Action app.schema/Store)
+          :schema $ quote $ Ref (reel.typed/State schema/Action schema/Store)
         'dispatch! $ %{} 'CodeEntry (:doc "|Dispatches a typed application action.")
           :code $ quote $ defn dispatch! (op) (dispatch-resolved! op)
           :examples $ []
-          :schema $ quote $ Fn app.schema/Action (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn schema/Action (-> Unit) (:features :js-ffi)
         'dispatch-resolved! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn dispatch-resolved! (op)
-            hint-fn $ Fn app.schema/ResolvedAction (-> Unit) (:features :js-ffi)
             reset! *reel $ match op
               (reel.typed/Control control) (typed-reel/apply-control updater @*reel control)
               (app.schema/Action action)
                 typed-reel/record-op updater @*reel action (generate-id!) (host/now-ms)
             , &unit
           :examples $ []
+          :schema $ quote $ Fn schema/ResolvedAction (-> Unit) (:features :js-ffi)
         'main! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn main! ()
             println "|Running mode:" $ if config/dev? |dev |release
@@ -380,7 +380,7 @@
           :code $ quote $ def store
             Store :states ({}) :content | :case-idx 0
           :examples $ []
-          :schema $ quote app.schema/Store
+          :schema $ quote Store
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.schema
     'app.updater $ %{} 'FileEntry
@@ -389,7 +389,7 @@
           :code $ quote $ defn restore-action (raw)
             Action :hydrate-storage $ decode-map-as (parse-cirru-edn raw) 'app.schema/Store
           :examples $ []
-          :schema $ quote $ Fn String (-> app.schema/Action)
+          :schema $ quote $ Fn String (-> Action)
           :tests $ [] $ %{} 'TestEntry (:name |restores-legacy-store-map)
             :code $ quote $ let
                 action $ restore-action $ format-cirru-edn
@@ -415,7 +415,7 @@
               (:pick-case c) (assoc store :case-idx c)
               (:hydrate-storage d) d
           :examples $ []
-          :schema $ quote $ Fn app.schema/Store app.schema/Action String Number (-> app.schema/Store)
+          :schema $ quote $ Fn Store Action String Number (-> Store)
           :tests $ [] $ %{} 'TestEntry (:name |updates-concrete-store)
             :code $ quote $ let
                 original $ Store :states ({}) :content | :case-idx 0
@@ -481,7 +481,7 @@
             , &unit
           :examples $ []
           :schema $ quote $ Fn String
-            Fn app.util/HighlightHost $ -> app.util/LanguageDefinition
+            Fn HighlightHost $ -> LanguageDefinition
             -> Unit
             :features :js-ffi
         'supported-langs $ %{} 'CodeEntry (:doc |)
