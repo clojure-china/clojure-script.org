@@ -246,7 +246,7 @@
         'dispatch! $ %{} 'CodeEntry (:doc "|Dispatches a typed application action.")
           :code $ quote $ defn dispatch! (op) (dispatch-resolved! op)
           :examples $ []
-          :schema $ quote $ Fn schema/Action (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn schema/Action (-> Unit) (:features :js-ffi :state)
         'dispatch-resolved! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn dispatch-resolved! (op)
             reset! *reel $ match op
@@ -255,7 +255,7 @@
                 typed-reel/record-op updater @*reel action (generate-id!) (host/now-ms)
             , &unit
           :examples $ []
-          :schema $ quote $ Fn schema/ResolvedAction (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn schema/ResolvedAction (-> Unit) (:features :js-ffi :state)
         'main! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn main! ()
             println "|Running mode:" $ if config/dev? |dev |release
@@ -283,7 +283,7 @@
             dispatch! $ schema/Action :pick-case $ decode-map-as (rand-int 10) Number
             println "|App started."
           :examples $ []
-          :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn (-> Unit) (:features :io :js-ffi :state)
         'mount-target $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn mount-target ()
             let
@@ -296,7 +296,7 @@
         'on-control! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn on-control! (control) (dispatch-resolved! control)
           :examples $ []
-          :schema $ quote $ Fn reel.typed/Control (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn reel.typed/Control (-> Unit) (:features :js-ffi :state)
         'reload! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn reload! ()
             if (js-nullish? build-errors)
@@ -309,14 +309,14 @@
               hud! |error build-errors
             , &unit
           :examples $ []
-          :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn (-> Unit) (:features :js-ffi :state)
         'render-app! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn render-app! ()
             render-with! (mount-target)
               fn () $ comp-container @*reel on-control!
               , dispatch!
           :examples $ []
-          :schema $ quote $ Fn (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn (-> Unit) (:features :js-ffi :state)
         'save-store! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn save-store! ()
             let
@@ -327,7 +327,7 @@
                   :content $ :content store
                   :case-idx $ :case-idx store
           :examples $ []
-          :schema $ quote $ Fn (-> Unit)
+          :schema $ quote $ Fn (-> Unit) (:features :state)
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.main
           :require
@@ -349,7 +349,7 @@
       :defs $ {}
         'Action $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defenum Action
-            :states (List respo.schema/CoordKey) Dynamic
+            :states (List respo.schema/CoordKey) StateValue
             :content String
             :pick-case Number
             :hydrate-storage app.schema/Store
@@ -363,10 +363,14 @@
           :code $ quote $ defstruct Showcase (:code String) (:text String) (:url String)
           :examples $ []
           :schema $ quote StructDef
+        'StateValue $ %{} 'CodeEntry (:doc |)
+          :code $ quote $ defunion StateValue Bool Number String Tag (List StateValue) (Map respo.schema/CoordKey StateValue)
+          :examples $ []
+          :schema $ quote UnionDef
         'Store $ %{} 'CodeEntry
-          :doc "|Application fields are concrete. Only the Respo component-state tree retains its existing heterogeneous payload contract; hydrate and updates must pass a runtime decoder."
+          :doc "|Application fields and the recursive Respo state tree are checked at hydration and update boundaries."
           :code $ quote $ defstruct Store
-            :states $ Map Tag Dynamic
+            :states $ Map respo.schema/CoordKey StateValue
             :content String
             :case-idx Number
           :examples $ []
@@ -394,7 +398,8 @@
             :code $ quote $ let
                 action $ restore-action $ format-cirru-edn
                   {}
-                    :states $ {}
+                    :states $ {} $ :reel
+                      {} $ :data false
                     :content |saved
                     :case-idx 3
               match action
@@ -402,6 +407,8 @@
                   do
                     assert= |saved $ :content restored
                     assert= 3 $ :case-idx restored
+                    assert= (:states restored)
+                      {} $ :reel $ {} (:data false)
                 _ $ raise "|Expected hydration action"
             :tags $ #{} :regression :unit
         'updater $ %{} 'CodeEntry (:doc |)
@@ -410,7 +417,7 @@
               (:states cursor s)
                 assoc store :states $ decode-map-as
                   update-state-tree (:states store) cursor s
-                  Map Tag Dynamic
+                  Map respo.schema/CoordKey app.schema/StateValue
               (:content c) (assoc store :content c)
               (:pick-case c) (assoc store :case-idx c)
               (:hydrate-storage d) d
