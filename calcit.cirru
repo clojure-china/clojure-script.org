@@ -274,11 +274,11 @@
               (:none) &unit
             render-app!
             add-watch! *reel :changes $ fn (r p)
-              hint-fn $ Fn (reel.typed/State app.schema/Action app.schema/Store) (reel.typed/State app.schema/Action app.schema/Store) (-> Unit)
+              hint-fn $ Fn (reel.typed/State schema/Action schema/Store) (reel.typed/State schema/Action schema/Store) (-> Unit)
               render-app!
             listen-devtools! |a on-control!
             browser/add-event-listener! |beforeunload $ fn (event)
-              hint-fn $ Fn js-ffi.browser/EventHost $ -> Unit
+              hint-fn $ Fn browser/EventHost $ -> Unit
               save-store!
             dispatch! $ schema/Action :pick-case $ decode-map-as (rand-int 10) Number
             println "|App started."
@@ -302,7 +302,7 @@
             if (js-nullish? build-errors)
               do (remove-watch! *reel :changes) (clear-cache!)
                 add-watch! *reel :changes $ fn (reel prev)
-                  hint-fn $ Fn (reel.typed/State app.schema/Action app.schema/Store) (reel.typed/State app.schema/Action app.schema/Store) (-> Unit)
+                  hint-fn $ Fn (reel.typed/State schema/Action schema/Store) (reel.typed/State schema/Action schema/Store) (-> Unit)
                   render-app!
                 reset! *reel $ typed-reel/refresh updater @*reel schema/store
                 hud! |ok~ |Ok
