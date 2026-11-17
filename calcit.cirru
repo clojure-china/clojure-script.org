@@ -36,8 +36,9 @@
                   , None
           :examples $ []
           :schema $ quote $ Fn (reel.typed/State app.schema/Action app.schema/Store)
-            Fn reel.typed/Control $ -> Unit
+            Fn reel.typed/Control (-> Unit) (:features :io :state)
             -> respo.schema/Component
+            :features :state
         'comp-footer $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-footer ()
             div
@@ -92,7 +93,7 @@
               comp-md-block (inline |resource.md)
                 {} $ :class-name |content
           :examples $ []
-          :schema $ quote $ Fn (-> respo.schema/Component)
+          :schema $ quote $ Fn (-> respo.schema/Component) (:features :state)
         'comp-tool-card $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defcomp comp-tool-card (info)
             div
@@ -150,7 +151,7 @@
                 comp-tool-card $ ToolInfo :name |shadow-cljs :logo (Some |http://cdn.tiye.me/logo/shadow-cljs.png) :url |http://shadow-cljs.org :description "|ClojureScript compilation made easy."
                 comp-tool-card $ ToolInfo :name |figwheel-main :logo None :url |https://figwheel.org :description "|Figwheel Main builds your ClojureScript code and hot loads it as you are coding!"
           :examples $ []
-          :schema $ quote $ Fn (-> respo.schema/Component)
+          :schema $ quote $ Fn (-> respo.schema/Component) (:features :state)
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.comp.container
           :require
@@ -193,7 +194,7 @@
                     :style $ {} (:background-color |transparent) (:font-family ui/font-code) (:color |white) (:padding |8px) (:margin |auto)
                     :highlight highlighter
           :examples $ []
-          :schema $ quote $ Fn Number (-> respo.schema/Component)
+          :schema $ quote $ Fn Number (-> respo.schema/Component) (:features :state)
         'showcases $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def showcases
             {}
@@ -309,14 +310,14 @@
               hud! |error build-errors
             , &unit
           :examples $ []
-          :schema $ quote $ Fn (-> Unit) (:features :js-ffi :state)
+          :schema $ quote $ Fn (-> Unit) (:features :io :js-ffi :state)
         'render-app! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn render-app! ()
             render-with! (mount-target)
               fn () $ comp-container @*reel on-control!
               , dispatch!
           :examples $ []
-          :schema $ quote $ Fn (-> Unit) (:features :js-ffi :state)
+          :schema $ quote $ Fn (-> Unit) (:features :io :js-ffi :state)
         'save-store! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn save-store! ()
             let
